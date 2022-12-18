@@ -117,7 +117,7 @@ public class ArtistDaoSQLImpl implements ArtistDao{
             }
             rs.close();
         }catch (SQLException e){
-            e.printStackTrace(); // poor error handling
+            e.printStackTrace();
         }
         return artists;
     }
