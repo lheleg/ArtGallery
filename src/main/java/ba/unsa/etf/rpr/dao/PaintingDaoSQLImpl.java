@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-public class PaintingDaoSQLImpl implements PaintingDao{
+public class PaintingDaoSQLImpl implements PaintingDao {
 
     private Connection connection;
 
@@ -32,38 +32,22 @@ public class PaintingDaoSQLImpl implements PaintingDao{
     @Override
     public Painting getById(int id) {
         String query = "SELECT * FROM Paintings WHERE id = ?";
-        String query1 = "SELECT * FROM Artists WHERE id = rs.getInt(\"artistID\"";
-        String query2 = "SELECT * FROM Galleries WHERE id = rs.getInt(\"galleryID\"";
 
         try{
             PreparedStatement stmt = this.connection.prepareStatement(query);
-            PreparedStatement stmt1 = this.connection.prepareStatement(query1);
-            PreparedStatement stmt2 = this.connection.prepareStatement(query2);
 
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
-            ResultSet rs1 = stmt1.executeQuery();
-            ResultSet rs2 = stmt2.executeQuery();
 
             if (rs.next()){ // result set is iterator.
-                Artist artist = new Artist();
-                Gallery gallery = new Gallery();
                 Painting painting = new Painting();
                 painting.setId(rs.getInt("id"));
                 painting.setAvailable(rs.getBoolean("available"));
                 painting.setTitle(rs.getString("title"));
 
-                artist.setId(rs1.getInt("artistID"));
-                artist.setFirstName(rs1.getString("firstName"));
-                artist.setLastName(rs1.getString("lastName"));
-                artist.setStyle(rs1.getString("style"));
+                painting.setArtist(new ArtistDaoSQLImpl().getById(rs.getInt("artistId")));
 
-                painting.setArtist(artist);
-
-                gallery.setId(rs2.getInt("galleryId"));
-                gallery.setName(rs2.getString("name"));
-
-                painting.setGallery(gallery);
+                painting.setGallery(new GalleryDaoSQLImpl().getById(rs.getInt("galleryId")));
                 rs.close();
                 return painting;
             }else{
@@ -130,37 +114,18 @@ public class PaintingDaoSQLImpl implements PaintingDao{
     @Override
     public List<Painting> getAll() {
         String query = "SELECT * FROM Paintings";
-        String query1 = "SELECT * FROM Artists";
-        String query2 = "SELECT * FROM Galleries";
 
         List<Painting> paintings = new ArrayList<Painting>();
         try{
             PreparedStatement stmt = this.connection.prepareStatement(query);
-            PreparedStatement stmt1 = this.connection.prepareStatement(query1);
-            PreparedStatement stmt2 = this.connection.prepareStatement(query2);
             ResultSet rs = stmt.executeQuery();
-            ResultSet rs1 = stmt1.executeQuery();
-            ResultSet rs2 = stmt2.executeQuery();
             while (rs.next()){ // result set is iterator.
                 Painting painting = new Painting();
-                Artist artist = new Artist();
-                Gallery gallery = new Gallery();
-
                 painting.setId(rs.getInt("id"));
                 painting.setAvailable(rs.getBoolean("available"));
                 painting.setTitle(rs.getString("title"));
-
-                artist.setId(rs.getInt("artistID"));
-                artist.setFirstName(rs1.getString("firstName"));
-                artist.setLastName(rs1.getString("lastName"));
-                artist.setStyle(rs1.getString("style"));
-
-                painting.setArtist(artist);
-
-                gallery.setId(rs.getInt("galleryId"));
-                gallery.setName(rs2.getString("name"));
-
-                painting.setGallery(gallery);
+                painting.setArtist(new ArtistDaoSQLImpl().getById(rs.getInt("artistId")));
+                painting.setGallery(new GalleryDaoSQLImpl().getById(rs.getInt("galleryId")));
                 paintings.add(painting);
             }
             rs.close();
