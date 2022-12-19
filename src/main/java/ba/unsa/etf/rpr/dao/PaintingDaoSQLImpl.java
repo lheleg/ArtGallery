@@ -1,7 +1,4 @@
 package ba.unsa.etf.rpr.dao;
-
-import ba.unsa.etf.rpr.domain.Artist;
-import ba.unsa.etf.rpr.domain.Gallery;
 import ba.unsa.etf.rpr.domain.Painting;
 
 import java.io.FileReader;
@@ -130,6 +127,78 @@ public class PaintingDaoSQLImpl implements PaintingDao {
             }
             rs.close();
         }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return paintings;
+    }
+
+    @Override
+    public List<Painting> getByArtistId(int artistId) {
+        List<Painting> paintings = new ArrayList<>();
+        String query = "SELECT * FROM Paintings WHERE artistId = ?";
+        try{
+            PreparedStatement stmt = this.connection.prepareStatement(query);
+            stmt.setInt(1,artistId);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){ // result set is iterator.
+                Painting painting = new Painting();
+                painting.setId(rs.getInt("id"));
+                painting.setAvailable(rs.getBoolean("available"));
+                painting.setTitle(rs.getString("title"));
+                painting.setArtist(new ArtistDaoSQLImpl().getById(rs.getInt("artistId")));
+                painting.setGallery(new GalleryDaoSQLImpl().getById(rs.getInt("galleryId")));
+                paintings.add(painting);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return paintings;
+    }
+
+    @Override
+    public List<Painting> getByGalleryId(int galleryId) {
+        List<Painting> paintings = new ArrayList<>();
+        String query = "SELECT * FROM Paintings WHERE galleryId = ?";
+        try{
+            PreparedStatement stmt = this.connection.prepareStatement(query);
+            stmt.setInt(1,galleryId);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){ // result set is iterator.
+                Painting painting = new Painting();
+                painting.setId(rs.getInt("id"));
+                painting.setAvailable(rs.getBoolean("available"));
+                painting.setTitle(rs.getString("title"));
+                painting.setArtist(new ArtistDaoSQLImpl().getById(rs.getInt("artistId")));
+                painting.setGallery(new GalleryDaoSQLImpl().getById(rs.getInt("galleryId")));
+                paintings.add(painting);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return paintings;
+    }
+
+    @Override
+    public List<Painting> getByGalleryIdAndAvailability(int galleryId) {
+        List<Painting> paintings = new ArrayList<>();
+        String query = "SELECT * FROM Paintings WHERE galleryId=? AND available=1";
+        try{
+            PreparedStatement stmt = this.connection.prepareStatement(query);
+            stmt.setInt(1,galleryId);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){ // result set is iterator.
+                Painting painting = new Painting();
+                painting.setId(rs.getInt("id"));
+                painting.setAvailable(rs.getBoolean("available"));
+                painting.setTitle(rs.getString("title"));
+                painting.setArtist(new ArtistDaoSQLImpl().getById(rs.getInt("artistId")));
+                painting.setGallery(new GalleryDaoSQLImpl().getById(rs.getInt("galleryId")));
+                paintings.add(painting);
+            }
+            rs.close();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return paintings;
