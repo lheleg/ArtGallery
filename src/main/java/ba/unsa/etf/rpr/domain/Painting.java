@@ -46,7 +46,7 @@ public class Painting {
     }
 
 
-    public boolean isAvailable() {
+    public boolean getAvailable() {
         return available;
     }
 
@@ -54,6 +54,16 @@ public class Painting {
         this.available = available;
     }
 
+    @Override
+    public String toString() {
+        return "Painting{" +
+                "id=" + id +
+                ", availability='" + available + '\'' +
+                ", title='" + title + '\'' +
+                ", artist='" + artist + '\'' +
+                ", gallery='" + gallery + '\'' +
+                '}';
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

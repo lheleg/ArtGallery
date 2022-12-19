@@ -74,6 +74,7 @@ public class GalleryDaoSQLImpl implements GalleryDao{
         try{
             PreparedStatement stmt = this.connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
             stmt.setObject(1, item.getName());
+            stmt.setObject(2, item.getId());
             stmt.executeUpdate();
             return item;
         }catch (SQLException e){

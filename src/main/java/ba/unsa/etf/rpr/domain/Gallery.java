@@ -35,6 +35,13 @@ public class Gallery {
     }
 
     @Override
+    public String toString() {
+        return "Gallery{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+    @Override
     public int hashCode() {
 
         return Objects.hash(id, name);
