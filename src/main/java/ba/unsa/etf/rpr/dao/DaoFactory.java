@@ -14,15 +14,15 @@ public class DaoFactory {
     private DaoFactory(){
     }
 
-    public static ArtistDao categoryDao(){
+    public static ArtistDao artistDao(){
         return artistDao;
     }
 
-    public static PaintingDao quoteDao(){
+    public static PaintingDao paintingDao(){
         return paintingDao;
     }
 
-    public static GalleryDao quoteHistoryDao(){
+    public static GalleryDao galleryDao(){
         return galleryDao;
     }
 
