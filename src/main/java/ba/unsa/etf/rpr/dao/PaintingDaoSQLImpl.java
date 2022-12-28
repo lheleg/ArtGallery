@@ -1,4 +1,6 @@
 package ba.unsa.etf.rpr.dao;
+import ba.unsa.etf.rpr.domain.Artist;
+import ba.unsa.etf.rpr.domain.Gallery;
 import ba.unsa.etf.rpr.domain.Painting;
 import ba.unsa.etf.rpr.exceptions.GalleryException;
 
@@ -42,23 +44,17 @@ public class PaintingDaoSQLImpl extends AbstractDao<Painting> implements Paintin
     }
 
     @Override
-    public List<Painting> getByArtistId(int artistId) {
-        List<Painting> paintings = new ArrayList<>();
-        String query = "SELECT * FROM Paintings WHERE artistId = ?";
-
-        return paintings;
+    public List<Painting> getByArtist(Artist artist) throws GalleryException{
+        return executeQuery("SELECT * FROM Paintings WHERE artistId = ?", new Object[]{artist.getId()});
     }
 
     @Override
-    public List<Painting> getByGalleryId(int galleryId) {
-        List<Painting> paintings = new ArrayList<>();
-        String query = "SELECT * FROM Paintings WHERE galleryId = ?";
-
-        return paintings;
+    public List<Painting> getByGallery(Gallery gallery) throws GalleryException{
+        return executeQuery("SELECT * FROM Paintings WHERE galleryId = ?", new Object[]{gallery.getId()});
     }
 
     @Override
-    public List<Painting> getByGalleryIdAndAvailability(int galleryId) {
+    public List<Painting> getByGalleryAndAvailability(Gallery gallery) {
         List<Painting> paintings = new ArrayList<>();
         String query = "SELECT * FROM Paintings WHERE galleryId=? AND available=1";
 
