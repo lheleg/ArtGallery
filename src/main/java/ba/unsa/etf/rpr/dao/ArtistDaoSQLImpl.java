@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Artist;
+import ba.unsa.etf.rpr.domain.Gallery;
 import ba.unsa.etf.rpr.exceptions.GalleryException;
 
 import java.sql.*;
@@ -14,7 +15,16 @@ public class ArtistDaoSQLImpl extends AbstractDao<Artist> implements ArtistDao{
 
     @Override
     public Artist row2object(ResultSet rs) throws GalleryException {
-        return null;
+        try {
+            Artist art = new Artist();
+            art.setId(rs.getInt("id"));
+            art.setFirstName(rs.getString("firstName"));
+            art.setLastName(rs.getString("lastName"));
+            art.setStyle(rs.getString("style"));
+            return art;
+        } catch (SQLException e) {
+            throw new GalleryException(e.getMessage(), e);
+        }
     }
 
     @Override
