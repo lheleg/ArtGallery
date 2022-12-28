@@ -1,11 +1,11 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Artist;
-import ba.unsa.etf.rpr.domain.Gallery;
 import ba.unsa.etf.rpr.exceptions.GalleryException;
 
 import java.sql.*;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class ArtistDaoSQLImpl extends AbstractDao<Artist> implements ArtistDao{
 
@@ -29,6 +29,11 @@ public class ArtistDaoSQLImpl extends AbstractDao<Artist> implements ArtistDao{
 
     @Override
     public Map<String, Object> object2row(Artist ob) {
-        return null;
+        Map<String, Object> row = new TreeMap<>();
+        row.put("id", ob.getId());
+        row.put("firstName", ob.getFirstName());
+        row.put("lastName", ob.getLastName());
+        row.put("style", ob.getStyle());
+        return row;
     }
 }
