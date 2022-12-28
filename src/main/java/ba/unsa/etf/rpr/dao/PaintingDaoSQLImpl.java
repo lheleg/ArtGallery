@@ -6,6 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class PaintingDaoSQLImpl extends AbstractDao<Painting> implements PaintingDao {
 
@@ -31,7 +32,13 @@ public class PaintingDaoSQLImpl extends AbstractDao<Painting> implements Paintin
 
     @Override
     public Map<String, Object> object2row(Painting ob) {
-        return null;
+        Map<String, Object> row = new TreeMap<>();
+        row.put("id", ob.getId());
+        row.put("available", ob.getAvailable());
+        row.put("title", ob.getTitle());
+        row.put("artistId", ob.getArtist());
+        row.put("galleryId", ob.getGallery());
+        return row;
     }
 
     @Override
