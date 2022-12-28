@@ -20,11 +20,11 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         try{
             this.tableName = tableName;
             Properties p = new Properties();
-            p.load(ClassLoader.getSystemResource("application.properties").openStream());
-            String url = p.getProperty("db.connection_string");
-            String username = p.getProperty("db.username");
-            String password = p.getProperty("db.password");
-            this.connection = DriverManager.getConnection(url, username, password);
+            p.load(ClassLoader.getSystemResource("db.properties").openStream());
+            String url = p.getProperty("url");
+            String user = p.getProperty("user");
+            String password = p.getProperty("password");
+            this.connection = DriverManager.getConnection(url, user, password);
         }catch (Exception e){
             e.printStackTrace();
             System.exit(0);
@@ -49,17 +49,17 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
 
     /**
      * Method for mapping Object into Map
-     * @param object - a bean object for specific table
+     * @param ob - a bean object for specific table
      * @return key, value sorted map of object
      */
-    public abstract Map<String, Object> object2row(T object);
+    public abstract Map<String, Object> object2row(T ob);
 
     public T getById(int id) throws GalleryException {
         return executeQueryUnique("SELECT * FROM "+this.tableName+" WHERE id = ?", new Object[]{id});
     }
 
     public List<T> getAll() throws GalleryException {
-        return executeQuery("SELECT * FROM "+ tableName, null);
+        return executeQuery("SELECT * FROM "+tableName, null);
     }
 
     public void delete(int id) throws GalleryException {
