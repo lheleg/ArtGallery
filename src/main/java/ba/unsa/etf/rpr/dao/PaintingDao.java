@@ -1,7 +1,9 @@
 package ba.unsa.etf.rpr.dao;
 
+import ba.unsa.etf.rpr.domain.Artist;
 import ba.unsa.etf.rpr.domain.Gallery;
 import ba.unsa.etf.rpr.domain.Painting;
+import ba.unsa.etf.rpr.exceptions.GalleryException;
 
 import java.util.List;
 
@@ -11,9 +13,9 @@ import java.util.List;
  * @author Lejla Heleg
  */
 public interface PaintingDao extends Dao<Painting>{
-    public List<Painting> getByArtistId(int artistId);
-    public List<Painting> getByGalleryId(int galleryId);
+    public List<Painting> getByArtist(Artist artist) throws GalleryException;
+    public List<Painting> getByGallery(Gallery galleryId) throws GalleryException;
 
-    public List<Painting> getByGalleryIdAndAvailability(int galleryId);
+    public List<Painting> getByGalleryAndAvailability(Gallery gallery) throws GalleryException;
 
 }
