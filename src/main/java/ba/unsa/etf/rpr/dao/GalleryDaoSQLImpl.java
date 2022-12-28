@@ -5,6 +5,7 @@ import ba.unsa.etf.rpr.exceptions.GalleryException;
 
 import java.sql.*;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class GalleryDaoSQLImpl extends AbstractDao<Gallery> implements GalleryDao{
 
@@ -14,7 +15,14 @@ public class GalleryDaoSQLImpl extends AbstractDao<Gallery> implements GalleryDa
 
     @Override
     public Gallery row2object(ResultSet rs) throws GalleryException {
-        return null;
+        try {
+            Gallery gal = new Gallery();
+            gal.setId(rs.getInt("id"));
+            gal.setName(rs.getString("name"));
+            return gal;
+        } catch (SQLException e) {
+            throw new GalleryException(e.getMessage(), e);
+        }
     }
 
     @Override
