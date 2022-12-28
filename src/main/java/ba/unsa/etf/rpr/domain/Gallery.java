@@ -6,7 +6,7 @@ import java.util.Objects;
  * bean of galleries
  * @author Lejla Heleg
  */
-public class Gallery {
+public class Gallery implements Idable{
     private int id;
     private String name;
 
