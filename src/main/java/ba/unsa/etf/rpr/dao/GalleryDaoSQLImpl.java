@@ -27,6 +27,9 @@ public class GalleryDaoSQLImpl extends AbstractDao<Gallery> implements GalleryDa
 
     @Override
     public Map<String, Object> object2row(Gallery ob) {
-        return null;
+        Map<String, Object> row = new TreeMap<>();
+        row.put("id", ob.getId());
+        row.put("name", ob.getName());
+        return row;
     }
 }
