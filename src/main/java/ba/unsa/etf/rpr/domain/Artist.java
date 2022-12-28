@@ -6,7 +6,7 @@ import java.util.Objects;
  * bean for artists
  * @author Lejla Heleg
  */
-public class Artist {
+public class Artist implements Idable{
 
     private int id;
     private String firstName;
