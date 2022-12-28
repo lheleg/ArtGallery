@@ -54,10 +54,7 @@ public class PaintingDaoSQLImpl extends AbstractDao<Painting> implements Paintin
     }
 
     @Override
-    public List<Painting> getByGalleryAndAvailability(Gallery gallery) {
-        List<Painting> paintings = new ArrayList<>();
-        String query = "SELECT * FROM Paintings WHERE galleryId=? AND available=1";
-
-        return paintings;
+    public List<Painting> getByGalleryAndAvailability(Gallery gallery) throws GalleryException {
+        return executeQuery("SELECT * FROM Paintings WHERE galleryId=? AND available=1", new Object[]{gallery.getId()});
     }
 }
