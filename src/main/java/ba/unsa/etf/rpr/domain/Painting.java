@@ -6,7 +6,7 @@ import java.util.Objects;
  * bean for painting
  * @author Lejla Heleg
  */
-public class Painting {
+public class Painting implements Idable{
     private int id;
     private boolean available;
     private String title;
