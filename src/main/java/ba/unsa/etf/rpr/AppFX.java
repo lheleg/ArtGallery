@@ -1,20 +1,25 @@
 package ba.unsa.etf.rpr;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
+
+
+import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 
 public class AppFX extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        String javaVersion = System.getProperty("java.version");
-        String javafxVersion = System.getProperty("javafx.version");
-        Label l = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
-        Scene scene = new Scene(new StackPane(l), 640, 480);
-        stage.setScene(scene);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
+        Parent root = fxmlLoader.load();
+        stage.setTitle("Art Gallery");
+        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        stage.getIcons().add(new Image("/images/ikonica.png"));
+        stage.setResizable(false);
         stage.show();
     }
 
