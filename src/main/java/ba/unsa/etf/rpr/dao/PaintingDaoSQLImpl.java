@@ -11,7 +11,6 @@ import java.util.TreeMap;
 
 public class PaintingDaoSQLImpl extends AbstractDao<Painting> implements PaintingDao {
 
-
     public PaintingDaoSQLImpl() {
         super("Paintings");
     }
