@@ -25,7 +25,7 @@
             <Image url="@../images/slika1.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="btnGall" mnemonicParsing="false" onAction="#onAcionGalleries" text="GALLERIES" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <Button mnemonicParsing="false" text="GALLERIES" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="80.0" left="128.0" />
          </GridPane.margin>
