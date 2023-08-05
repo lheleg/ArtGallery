@@ -21,10 +21,15 @@ public class AppFX extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
         Parent root = fxmlLoader.load();
+
         Scene scene = new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE);
         scene.setFill(Color.TRANSPARENT);
         stage.setTitle("Art Gallery");
         stage.setScene(scene);
+
+        HomeController homeController = fxmlLoader.getController();
+        homeController.setPrimaryStage(stage);
+
         stage.getIcons().add(new Image("/images/ikonica.png"));
       //  stage.initStyle(StageStyle.TRANSPARENT); // hides upper window bar
         stage.setResizable(false);
