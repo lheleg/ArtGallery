@@ -21,6 +21,9 @@ public class HomeController {
     @FXML
     private Label clickableGall;
 
+    @FXML
+    private Label clickableArt;
+
     public GridPane galleryPane = new GridPane();
     private Stage primaryStage;
 
@@ -38,6 +41,23 @@ public class HomeController {
         // Create a new stage and set its scene
         Stage stageGall = new Stage();
         stageGall.setTitle("Our galleries");
+        stageGall.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+
+        // Show the new stage
+        stageGall.show();
+    }
+
+    @FXML
+    private void showArtists(MouseEvent event) throws IOException {
+        this.primaryStage.close();
+
+        // Load the FXML file for new stage
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/artists.fxml"));
+        Parent root = loader.load();
+
+        // Create a new stage and set its scene
+        Stage stageGall = new Stage();
+        stageGall.setTitle("Our artists");
         stageGall.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
 
         // Show the new stage
