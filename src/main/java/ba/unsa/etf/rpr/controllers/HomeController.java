@@ -7,9 +7,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -20,7 +22,6 @@ public class HomeController {
 
     @FXML
     private Label clickableGall;
-
     @FXML
     private Label clickableArt;
 
@@ -43,6 +44,9 @@ public class HomeController {
         stageGall.setTitle("Our galleries");
         stageGall.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
 
+        stageGall.getIcons().add(new Image("/images/ikonica.png"));
+        stageGall.initStyle(StageStyle.TRANSPARENT); // hides upper window bar
+        stageGall.setResizable(false);
         // Show the new stage
         stageGall.show();
     }
@@ -56,12 +60,15 @@ public class HomeController {
         Parent root = loader.load();
 
         // Create a new stage and set its scene
-        Stage stageGall = new Stage();
-        stageGall.setTitle("Our artists");
-        stageGall.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        Stage stageArt = new Stage();
+        stageArt.setTitle("Our artists");
+        stageArt.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
 
+        stageArt.getIcons().add(new Image("/images/ikonica.png"));
+        //  stageArt.initStyle(StageStyle.TRANSPARENT); // hides upper window bar
+        stageArt.setResizable(false);
         // Show the new stage
-        stageGall.show();
+        stageArt.show();
     }
 
     @FXML
