@@ -13,34 +13,41 @@
     <cursor>
         <Cursor fx:constant="S_RESIZE" />
     </cursor>
-    <Pane prefHeight="600.0" prefWidth="100.0" style="-fx-background-color: #d4ccb8;">
-        <Button fx:id="reservationsButton" layoutY="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="sideOption" text="e x p l o r e">
-         <font>
-            <Font name="Marlett" size="12.0" />
-         </font></Button>
-        <Button fx:id="homeButton" layoutY="230.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="sideOption" text="p o p u l a r">
-         <font>
-            <Font name="Marlett" size="12.0" />
-         </font></Button>
-        <Label fx:id="welcomeLabel" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutY="110.0" prefHeight="100.0" prefWidth="100.0" style="-fx-text-fill: #123456;" text="Welcome" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+    <Pane prefHeight="600.0" prefWidth="100.0" style="-fx-background-color: #D3D3D3;">
+        <Label fx:id="welcomeLabel" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="-200.0" layoutY="250.0" prefHeight="100.0" prefWidth="500.0" rotate="-90.0" style="-fx-text-fill: #123456;" text="g  a  l  l  e  r  i  e  s" textAlignment="CENTER" textFill="WHITE" wrapText="true">
             <font>
-                <Font name="Marlett" size="16.0" />
+                <Font name="Marlett" size="37.0" />
             </font>
         </Label>
-        <Button fx:id="myProfileButton" layoutY="370.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="sideOption" text="a b o u t   u s">
-         <font>
-            <Font name="Marlett" size="12.0" />
-         </font></Button>
-        <Button fx:id="aboutUsButton" layoutY="440.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="sideOption" text="m e n u">
-         <font>
-            <Font name="Marlett" size="12.0" />
-         </font></Button>
-       <ImageView fitHeight="62.0" fitWidth="106.0" layoutX="19.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
-           <Image url="@../images/ikonica.png" />
-       </ImageView>
-       <ImageView fx:id="logOutButton" fitHeight="37.0" fitWidth="25.0" layoutX="16.0" layoutY="554.0" pickOnBounds="true" preserveRatio="true">
-           <Image url="@../images/ikonica.png" />
-       </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/cancel.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/info.png" />
+         </image>
+      </ImageView>
     </Pane>
-    <ScrollPane fx:id="scroller" layoutX="105.0" layoutY="5.0" prefHeight="590.0" prefWidth="890.0" />
+   <Pane layoutX="100.0" prefHeight="40.0" prefWidth="900.0">
+      <children>
+           <Button fx:id="aboutUsButton" layoutX="600.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="sideOption" text="m e n u">
+            <font>
+               <Font name="Marlett" size="12.0" />
+            </font>
+         </Button>
+           <Button fx:id="reservationsButton" layoutX="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="sideOption" text="e x p l o r e">
+            <font>
+               <Font name="Marlett" size="12.0" />
+            </font>
+         </Button>
+           <Button fx:id="homeButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="sideOption" text="p o p u l a r">
+            <font>
+               <Font name="Marlett" size="12.0" />
+            </font>
+         </Button>
+      </children>
+   </Pane>
+    <ScrollPane fx:id="scroller" layoutX="105.0" layoutY="45.0" prefHeight="550.0" prefWidth="890.0" />
 </Pane>

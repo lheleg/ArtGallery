@@ -31,7 +31,7 @@ public class AppFX extends Application {
         homeController.setPrimaryStage(stage);
 
         stage.getIcons().add(new Image("/images/ikonica.png"));
-      //  stage.initStyle(StageStyle.TRANSPARENT); // hides upper window bar
+        stage.initStyle(StageStyle.TRANSPARENT); // hides upper window bar
         stage.setResizable(false);
         stage.show();
        // Stage secondStage
