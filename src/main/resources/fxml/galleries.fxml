@@ -7,6 +7,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-radius: 20; -fx-background-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
@@ -14,10 +17,26 @@
         <Cursor fx:constant="S_RESIZE" />
     </cursor>
     <Pane prefHeight="600.0" prefWidth="100.0" style="-fx-background-color: #D3D3D3;">
-        <Label fx:id="welcomeLabel" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="-200.0" layoutY="250.0" prefHeight="100.0" prefWidth="500.0" rotate="-90.0" style="-fx-text-fill: #123456;" text="g  a  l  l  e  r  i  e  s" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+        <Label fx:id="welcomeLabel" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="-200.0" layoutY="250.0" prefHeight="100.0" prefWidth="500.0" rotate="-90.0" style="-fx-text-fill: #8b5349;" text="g  a  l  l  e  r  i  e  s" textAlignment="CENTER" wrapText="true">
             <font>
                 <Font name="Marlett" size="37.0" />
             </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
         </Label>
       <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -32,17 +51,17 @@
     </Pane>
    <Pane layoutX="100.0" prefHeight="40.0" prefWidth="900.0">
       <children>
-           <Button fx:id="aboutUsButton" layoutX="600.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="sideOption" text="m e n u">
+           <Button fx:id="aboutUsButton" layoutX="600.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="sideOption" text="a v a i l a b l e">
             <font>
                <Font name="Marlett" size="12.0" />
             </font>
          </Button>
-           <Button fx:id="reservationsButton" layoutX="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="sideOption" text="e x p l o r e">
+           <Button fx:id="reservationsButton" layoutX="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="sideOption" text="p o p u l a r">
             <font>
                <Font name="Marlett" size="12.0" />
             </font>
          </Button>
-           <Button fx:id="homeButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="sideOption" text="p o p u l a r">
+           <Button fx:id="homeButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="sideOption" text="e x p l o r e">
             <font>
                <Font name="Marlett" size="12.0" />
             </font>
