@@ -42,7 +42,7 @@
             <Insets bottom="120.0" left="180.0" />
          </GridPane.margin>
       </Label>
-      <ImageView fx:id="cancelImageView" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+      <ImageView fx:id="cancelImageView" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
          <GridPane.margin>
             <Insets bottom="175.0" left="5.0" />
          </GridPane.margin>
