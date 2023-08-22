@@ -48,6 +48,11 @@
                 <Image url="@../images/info.png" />
             </image>
         </ImageView>
+        <ImageView fx:id="menuImageView" fitHeight="22.0" fitWidth="22.0" layoutX="40.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/menub.png" />
+            </image>
+        </ImageView>
     </Pane>
     <Pane layoutX="100.0" prefHeight="40.0" prefWidth="900.0">
         <children>
