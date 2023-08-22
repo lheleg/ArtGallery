@@ -58,7 +58,7 @@
             <Insets bottom="175.0" left="30.0" />
          </GridPane.margin>
       </ImageView>
-      <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="40.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+      <ImageView fx:id="menu ImageView" fitHeight="22.0" fitWidth="22.0" layoutX="40.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
          <image>
             <Image url="@../images/menub.png" />
          </image>
