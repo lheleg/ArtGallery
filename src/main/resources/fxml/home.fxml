@@ -50,7 +50,7 @@
             <Image url="@../images/cancel.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="infoImageView" fitHeight="20.0" fitWidth="20.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
          <image>
             <Image url="@../images/info.png" />
          </image>
@@ -58,12 +58,12 @@
             <Insets bottom="175.0" left="30.0" />
          </GridPane.margin>
       </ImageView>
-      <ImageView fx:id="menuImageView" fitHeight="22.0" fitWidth="22.0" layoutX="40.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
          <image>
-            <Image url="@../images/menub.png" />
+            <Image url="@../images/menu.png" />
          </image>
          <GridPane.margin>
-            <Insets bottom="176.0" left="54.0" />
+            <Insets bottom="175.0" left="55.0" />
          </GridPane.margin>
       </ImageView>
    </children>

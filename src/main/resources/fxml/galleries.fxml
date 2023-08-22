@@ -38,19 +38,19 @@
                 </LinearGradient>
             </textFill>
         </Label>
-        <ImageView fx:id="cancelImageView" fitHeight="20.0" fitWidth="20.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="cancelImageView" fitHeight="20.0" fitWidth="20.0" layoutX="5.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/cancel.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="infoImageView" fitHeight="20.0" fitWidth="20.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="infoImageView" fitHeight="20.0" fitWidth="20.0" layoutX="30.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/info.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="menuImageView" fitHeight="22.0" fitWidth="22.0" layoutX="55.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="menuImageView" fitHeight="20.0" fitWidth="20.0" layoutX="55.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../images/menub.png" />
+                <Image url="@../images/menu.png" />
             </image>
         </ImageView>
     </Pane>
