@@ -9,6 +9,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * MySQL Implementation of DAO
+ *
+ * @author Lejla Heleg
+ */
 public class PaintingDaoSQLImpl extends AbstractDao<Painting> implements PaintingDao {
 
     public PaintingDaoSQLImpl() {

@@ -12,6 +12,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -22,6 +24,8 @@ import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 public class HomeController {
 
+    @FXML
+    public GridPane root;
     @FXML
     private Label clickableGall;
     @FXML
@@ -90,6 +94,7 @@ public class HomeController {
     void initialize() {
 
     }
+
 
 
 }

@@ -7,6 +7,11 @@ import java.sql.*;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * MySQL Implementation of DAO
+ *
+ * @author Lejla Heleg
+ */
 public class ArtistDaoSQLImpl extends AbstractDao<Artist> implements ArtistDao{
 
     public ArtistDaoSQLImpl() {
