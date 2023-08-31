@@ -10,6 +10,7 @@ public class DaoFactory {
     private static final ArtistDao artistDao = new ArtistDaoSQLImpl();
     private static final PaintingDao paintingDao = new PaintingDaoSQLImpl();
     private static final GalleryDao galleryDao = new GalleryDaoSQLImpl();
+    private static final UserDao userDao = new UserDaoSQLImpl();
 
     private DaoFactory(){
     }
@@ -26,5 +27,8 @@ public class DaoFactory {
         return galleryDao;
     }
 
+    public static UserDao userDao() {
+        return userDao;
+    }
 }
 
