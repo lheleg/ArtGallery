@@ -7,6 +7,7 @@ import ba.unsa.etf.rpr.exceptions.GalleryException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * MySQL Implementation of DAO
@@ -36,6 +37,12 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao {
 
     @Override
     public Map<String, Object> object2row(User ob) {
-        return null;
+        Map<String, Object> row = new TreeMap<>();
+        row.put("id", ob.getId());
+        row.put("username", ob.getUsername());
+        row.put("password", ob.getPassword());
+        row.put("firstName", ob.getFirstName());
+        row.put("lastName", ob.getLastName());
+        return row;
     }
 }
