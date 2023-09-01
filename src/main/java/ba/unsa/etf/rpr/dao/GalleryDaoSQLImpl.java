@@ -4,7 +4,9 @@ import ba.unsa.etf.rpr.domain.Gallery;
 import ba.unsa.etf.rpr.exceptions.GalleryException;
 
 import java.sql.*;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 /**
@@ -40,5 +42,23 @@ public class GalleryDaoSQLImpl extends AbstractDao<Gallery> implements GalleryDa
         row.put("url", ob.getUrl());
         row.put("userId", ob.getUser());
         return row;
+    }
+
+    @Override
+    public Set<Gallery> fetchGalleries() {
+        Set<Gallery> galleries = new HashSet<>();
+        try{
+            ResultSet resultSet = getConnection().createStatement().executeQuery("SELECT * FROM Galleries");
+            while (resultSet.next()) {
+                Gallery gal = row2object(resultSet);
+                galleries.add(gal);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (GalleryException e) {
+            e.printStackTrace();
+        }
+        //return the list of galleries
+        return galleries;
     }
 }
