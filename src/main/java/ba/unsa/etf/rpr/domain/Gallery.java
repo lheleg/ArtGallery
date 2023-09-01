@@ -11,6 +11,7 @@ public class Gallery implements Idable{
     private String name;
     private String url;
     private User user;
+    private String image;
 
     public int getId() {
         return id;
@@ -62,5 +63,13 @@ public class Gallery implements Idable{
     public int hashCode() {
 
         return Objects.hash(id, name);
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
