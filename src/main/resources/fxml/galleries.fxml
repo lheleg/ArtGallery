@@ -16,8 +16,8 @@
     <cursor>
         <Cursor fx:constant="S_RESIZE" />
     </cursor>
-    <Pane prefHeight="600.0" prefWidth="100.0" style="-fx-background-color: #D3D3D3;">
-        <Label fx:id="gallLabel" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="-200.0" layoutY="250.0" prefHeight="100.0" prefWidth="500.0" rotate="-90.0" style="-fx-text-fill: #8b5349;" text="g  a  l  l  e  r  i  e  s" textAlignment="CENTER" wrapText="true">
+    <Pane prefHeight="600.0" prefWidth="100.0" style="-fx-background-color: #e2d5cb;">
+        <Label fx:id="gallLabel" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="-200.0" layoutY="250.0" prefHeight="100.0" prefWidth="500.0" rotate="-90.0" style="-fx-text-fill: #8b5349; -fx-background-color: #e2d5cb;" text="g  a  l  l  e  r  i  e  s" textAlignment="CENTER" wrapText="true">
             <font>
                 <Font name="Marlett" size="37.0" />
             </font>
@@ -37,41 +37,59 @@
                     </stops>
                 </LinearGradient>
             </textFill>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
         </Label>
         <ImageView fx:id="cancelImageView" fitHeight="20.0" fitWidth="20.0" layoutX="5.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/cancel.png" />
             </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
         </ImageView>
         <ImageView fx:id="infoImageView" fitHeight="20.0" fitWidth="20.0" layoutX="30.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/info.png" />
             </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
         </ImageView>
         <ImageView fx:id="menuImageView" fitHeight="20.0" fitWidth="20.0" layoutX="55.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/menu.png" />
             </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
         </ImageView>
+      <cursor>
+         <Cursor fx:constant="DEFAULT" />
+      </cursor>
     </Pane>
     <Pane layoutX="100.0" prefHeight="40.0" prefWidth="900.0">
         <children>
-            <Button fx:id="availableButton" layoutX="600.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="sideOption" text="a v a i l a b l e">
+            <Button fx:id="availableButton" layoutX="600.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #f1c40f;" styleClass="sideOption" text="a v a i l a b l e">
                 <font>
                     <Font name="Marlett" size="12.0" />
                 </font>
             </Button>
-            <Button fx:id="popularButton" layoutX="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="sideOption" text="p o p u l a r">
+            <Button fx:id="popularButton" layoutX="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #3498db;" styleClass="sideOption" text="p o p u l a r">
                 <font>
                     <Font name="Marlett" size="12.0" />
                 </font>
             </Button>
-            <Button fx:id="exploreButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="sideOption" text="e x p l o r e">
+            <Button fx:id="exploreButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #e74c3c;" styleClass="sideOption" text="e x p l o r e">
                 <font>
                     <Font name="Marlett" size="12.0" />
                 </font>
             </Button>
         </children>
     </Pane>
-    <ScrollPane fx:id="scroller" layoutX="105.0" layoutY="45.0" prefHeight="550.0" prefWidth="890.0" />
+    <ScrollPane fx:id="scroller" layoutX="105.0" layoutY="45.0" prefHeight="550.0" prefWidth="890.0">
+      <cursor>
+         <Cursor fx:constant="DEFAULT" />
+      </cursor></ScrollPane>
 </Pane>
