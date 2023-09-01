@@ -29,6 +29,7 @@ public class PaintingDaoSQLImpl extends AbstractDao<Painting> implements Paintin
             pai.setTitle(rs.getString("title"));
             pai.setArtist(DaoFactory.artistDao().getById(rs.getInt("artistId")));
             pai.setGallery(DaoFactory.galleryDao().getById(rs.getInt("paintingId")));
+            pai.setImage(rs.getString("image"));
             return pai;
         } catch (Exception e) {
             throw new GalleryException(e.getMessage(), e);
@@ -43,6 +44,7 @@ public class PaintingDaoSQLImpl extends AbstractDao<Painting> implements Paintin
         row.put("title", ob.getTitle());
         row.put("artistId", ob.getArtist());
         row.put("galleryId", ob.getGallery());
+        row.put("image", ob.getImage());
         return row;
     }
 

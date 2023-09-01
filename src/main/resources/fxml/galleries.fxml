@@ -75,16 +75,25 @@
                 <font>
                     <Font name="Marlett" size="12.0" />
                 </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
             </Button>
             <Button fx:id="popularButton" layoutX="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #3498db;" styleClass="sideOption" text="p o p u l a r">
                 <font>
                     <Font name="Marlett" size="12.0" />
                 </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
             </Button>
             <Button fx:id="exploreButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #e74c3c;" styleClass="sideOption" text="e x p l o r e">
                 <font>
                     <Font name="Marlett" size="12.0" />
                 </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
             </Button>
         </children>
     </Pane>

@@ -12,6 +12,7 @@ public class Painting implements Idable{
     private String title;
     private Artist artist;
     private Gallery gallery;
+    private String image;
 
     public int getId() {
         return id;
@@ -44,7 +45,9 @@ public class Painting implements Idable{
     public void setGallery(Gallery gallery) {
         this.gallery = gallery;
     }
+    public String getImage() { return image; }
 
+    public void setImage(String image) { this.image = image; }
 
     public boolean getAvailable() {
         return available;
@@ -76,4 +79,5 @@ public class Painting implements Idable{
     public int hashCode() {
         return Objects.hash(id, title, available, artist, gallery);
     }
+
 }
