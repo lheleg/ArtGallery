@@ -25,6 +25,7 @@ public class GalleryDaoSQLImpl extends AbstractDao<Gallery> implements GalleryDa
             gal.setName(rs.getString("name"));
             gal.setUrl(rs.getString("url"));
             gal.setUser(DaoFactory.userDao().getById(rs.getInt("userId")));
+            gal.setImage(rs.getString("image"));
             return gal;
         } catch (SQLException e) {
             throw new GalleryException(e.getMessage(), e);
@@ -38,6 +39,7 @@ public class GalleryDaoSQLImpl extends AbstractDao<Gallery> implements GalleryDa
         row.put("name", ob.getName());
         row.put("url", ob.getUrl());
         row.put("userId", ob.getUser());
+        row.put("image", ob.getImage());
         return row;
     }
 
