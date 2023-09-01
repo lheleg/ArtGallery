@@ -13,18 +13,19 @@ import java.util.*;
  */
 public abstract class AbstractDao<T extends Idable> implements Dao<T>{
 
-    private Connection connection;
+    private static Connection connection = null;
     private String tableName;
-
     public AbstractDao(String tableName) {
         try{
+            System.out.println("kreirano");
             this.tableName = tableName;
+            if(AbstractDao.connection==null){
             Properties p = new Properties();
             p.load(ClassLoader.getSystemResource("db.properties").openStream());
             String url = p.getProperty("url");
             String user = p.getProperty("user");
             String password = p.getProperty("password");
-            this.connection = DriverManager.getConnection(url, user, password);
+            this.connection = DriverManager.getConnection(url, user, password);}
         }catch (Exception e){
             e.printStackTrace();
             System.exit(0);

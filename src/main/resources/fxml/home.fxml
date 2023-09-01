@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -33,6 +34,9 @@
          <font>
             <Font name="Marlett" size="19.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
       <Label fx:id="clickableArt" alignment="CENTER" layoutX="138.0" layoutY="160.0" onMouseClicked="#showArtists" text="l o g   i n" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <font>
@@ -41,6 +45,9 @@
          <GridPane.margin>
             <Insets bottom="120.0" left="183.0" />
          </GridPane.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
       <ImageView fx:id="cancelImageView" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
          <GridPane.margin>
@@ -49,6 +56,9 @@
          <image>
             <Image url="@../images/cancel.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <ImageView fx:id="infoImageView" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
          <image>
@@ -57,6 +67,9 @@
          <GridPane.margin>
             <Insets bottom="175.0" left="30.0" />
          </GridPane.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <ImageView fx:id="menuImageView" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
          <image>
@@ -65,6 +78,9 @@
          <GridPane.margin>
             <Insets bottom="175.0" left="55.0" />
          </GridPane.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
    </children>
 </GridPane>

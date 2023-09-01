@@ -13,7 +13,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-radius: 20; -fx-background-color: #e2d5cb;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-radius: 20; -fx-background-color: #e2d5cb;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.GalleriesController">
     <cursor>
         <Cursor fx:constant="DEFAULT" />
     </cursor>
@@ -102,7 +102,7 @@
          </ButtonBar>
         </children>
     </Pane>
-    <ScrollPane fx:id="scroller" layoutX="80.0" layoutY="45.0" prefHeight="550.0" prefWidth="910.0">
+    <ScrollPane fx:id="scroller" layoutX="80.0" layoutY="45.0" prefHeight="550.0" prefWidth="906.0" style="-fx-background-radius: 3; -fx-background-color: white;">
       <cursor>
          <Cursor fx:constant="DEFAULT" />
       </cursor></ScrollPane>
