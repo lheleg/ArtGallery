@@ -53,7 +53,7 @@ public class GalleriesController {
             rect.setArcWidth(10);
 
             Label galName = new Label(gal.getName());
-            galName.setTextFill(Color.WHITE);
+            galName.setTextFill(Color.BEIGE);
             galName.setFont(Font.font(null, FontWeight.BOLD, 18));
             galName.setAlignment(Pos.CENTER);
 
@@ -76,9 +76,9 @@ public class GalleriesController {
         List<Artist> artists = a.fetchArtists();
         int row = 0;
         int column = 0;
-        pane.setHgap(24);
+        pane.setHgap(100);
         pane.setVgap(15);
-        pane.setPadding(new Insets(30));
+        pane.setPadding(new Insets(7,7,0,45));
         pane.setAlignment(Pos.CENTER);
 
         for (Artist artist : artists) {
@@ -87,12 +87,12 @@ public class GalleriesController {
             imageView.setFitHeight(250);
             Rectangle rect = new Rectangle(imageView.getFitWidth()+5, imageView.getFitHeight()+5,
                     new LinearGradient(0, 1.4, 0, 0, true, javafx.scene.paint.CycleMethod.NO_CYCLE,
-                            new Stop(0, Color.LIGHTBLUE), new Stop(1, Color.TRANSPARENT)));
+                            new Stop(0, Color.BLACK), new Stop(1, Color.TRANSPARENT)));
             rect.setArcHeight(10);
             rect.setArcWidth(10);
 
             Label galName = new Label(artist.getFirstName() + " " + artist.getLastName());
-            galName.setTextFill(Color.WHITE);
+            galName.setTextFill(Color.LIGHTBLUE);
             galName.setFont(Font.font(null, FontWeight.BOLD, 18));
             galName.setAlignment(Pos.CENTER);
 
@@ -113,7 +113,7 @@ public class GalleriesController {
 
     @FXML
     public void initialize() throws GalleryException {
-        GalleryDivs();
+        ArtistDivs();
 
         galleriesButton.setOnAction(event -> {
             // Clear existing content in pane
