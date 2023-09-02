@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.ArtistManager;
 import ba.unsa.etf.rpr.business.GalleryManager;
+import ba.unsa.etf.rpr.business.PaintingManager;
 import ba.unsa.etf.rpr.domain.Artist;
 import ba.unsa.etf.rpr.domain.Gallery;
 import ba.unsa.etf.rpr.domain.Painting;
@@ -36,6 +37,7 @@ public class GalleriesController {
 
     private final ArtistManager a = new ArtistManager();
 
+    private final PaintingManager p = new PaintingManager();
     public void GalleryDivs() throws GalleryException {
         List<Gallery> galleries = g.fetchGalleries();
         int row = 0;
@@ -114,6 +116,48 @@ public class GalleriesController {
     }
 
     public void ShowPaintings(int id, String forWhat) throws GalleryException {
+        int row = 0;
+        int column = 0;
+        pane.setHgap(100);
+        pane.setVgap(15);
+        pane.setPadding(new Insets(7,7,0,45));
+        pane.setAlignment(Pos.CENTER);
+
+        List<Painting> paintings;
+
+        if (forWhat == "gallery"){
+            paintings = p.getByGallery(g.getById(id));
+        }else {
+            paintings = p.getByArtist(a.getById(id));
+        }
+
+        for (Painting painting : paintings) {
+            ImageView imageView = new ImageView(new Image(painting.getImage()));
+            imageView.setFitWidth(190);
+            imageView.setFitHeight(240);
+            Rectangle rect = new Rectangle(imageView.getFitWidth()+5, imageView.getFitHeight()+5,
+                    new LinearGradient(0, 1.4, 0, 0, true, javafx.scene.paint.CycleMethod.NO_CYCLE,
+                            new Stop(0, Color.BLACK), new Stop(1, Color.TRANSPARENT)));
+            rect.setArcHeight(10);
+            rect.setArcWidth(10);
+
+            Label galName = new Label(painting.getTitle());
+            galName.setTextFill(Color.INDIANRED);
+            galName.setFont(Font.font(null, FontWeight.BOLD, 18));
+            galName.setAlignment(Pos.CENTER);
+
+            StackPane stackPane = new StackPane();
+            stackPane.getChildren().addAll(imageView, rect, galName);
+            stackPane.setAlignment(Pos.CENTER);
+
+            pane.add(stackPane, column, row);
+            column++;
+            if (column == 3) {
+                column = 0;
+                row++;
+            }
+        }
+        scroller.setContent(pane);
     }
 
     @FXML
