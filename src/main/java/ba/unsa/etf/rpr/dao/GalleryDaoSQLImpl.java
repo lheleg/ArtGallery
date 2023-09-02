@@ -47,7 +47,7 @@ public class GalleryDaoSQLImpl extends AbstractDao<Gallery> implements GalleryDa
     public List<Gallery> fetchGalleries() {
         List<Gallery> galleries = new ArrayList<>();
         try{
-            ResultSet resultSet = getConnection().createStatement().executeQuery("SELECT * FROM Galleries");
+            ResultSet resultSet = getConnection().createStatement().executeQuery("SELECT * FROM Galleries WHERE USERID=0");
             while (resultSet.next()) {
                 Gallery gal = row2object(resultSet);
                 galleries.add(gal);
