@@ -24,17 +24,18 @@ import java.util.List;
 
 public class GalleriesController {
     public ScrollPane scroller;
-    public GridPane galPane = new GridPane();
+    public GridPane pane = new GridPane();
     public Button galleriesButton;
+    public Button artistsButton;
     private final GalleryManager g = new GalleryManager();
     public void GalleryDivs() throws GalleryException {
         List<Gallery> galleries = g.fetchGalleries();
         int row = 0;
         int column = 0;
-        galPane.setHgap(24);
-        galPane.setVgap(15);
-        galPane.setPadding(new Insets(7));
-        galPane.setAlignment(Pos.CENTER);
+        pane.setHgap(24);
+        pane.setVgap(15);
+        pane.setPadding(new Insets(7));
+        pane.setAlignment(Pos.CENTER);
        // System.out.println(Arrays.toString(galleries.toArray()));
         for (Gallery gal : galleries) {
             ImageView imageView = new ImageView(new Image(gal.getImage()));
@@ -56,14 +57,14 @@ public class GalleriesController {
             stackPane.setAlignment(Pos.CENTER);
 
 
-            galPane.add(stackPane, column, row);
+            pane.add(stackPane, column, row);
             column++;
             if (column == 3) {
                 column = 0;
                 row++;
             }
         }
-        scroller.setContent(galPane);
+        scroller.setContent(pane);
     }
 
     @FXML
@@ -71,8 +72,18 @@ public class GalleriesController {
         GalleryDivs();
 
         galleriesButton.setOnAction(event -> {
-            // Clear existing content in galPane
-            galPane.getChildren().clear();
+            // Clear existing content in pane
+            pane.getChildren().clear();
+            try {
+                GalleryDivs();
+            } catch (GalleryException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        artistsButton.setOnAction(event -> {
+            // Clear existing content in pane
+            pane.getChildren().clear();
             try {
                 GalleryDivs();
             } catch (GalleryException e) {
