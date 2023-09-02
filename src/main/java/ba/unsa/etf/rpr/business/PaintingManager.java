@@ -65,6 +65,6 @@ public class PaintingManager {
      * @return the list of paintings
      */
     public List<Painting> getByArtist(Artist artist) throws GalleryException {
-        return DaoFactory.paintingDao().getByGallery(artist);
+        return DaoFactory.paintingDao().getByArtist(artist);
     }
 }
