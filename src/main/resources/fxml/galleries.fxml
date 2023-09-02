@@ -42,7 +42,7 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
         </Label>
-        <ImageView fx:id="cancelImageView" fitHeight="20.0" fitWidth="20.0" layoutX="5.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="cancelImageView" fitHeight="20.0" fitWidth="20.0" layoutX="5.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#closeAction">
             <image>
                 <Image url="@../images/cancel.png" />
             </image>
