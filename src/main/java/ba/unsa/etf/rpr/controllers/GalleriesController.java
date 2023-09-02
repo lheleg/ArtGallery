@@ -64,7 +64,7 @@ public class GalleriesController {
             stackPane.getChildren().addAll(imageView, rect, galName);
             stackPane.setAlignment(Pos.CENTER);
 
-         //   stackPane.setOnMouseClicked(event -> ShowPaintingsForGallery(gal.getId()));
+         //   stackPane.setOnMouseClicked(event -> ShowPaintings(gal.getId(), gallery));
             pane.add(stackPane, column, row);
             column++;
             if (column == 3) {
@@ -113,7 +113,7 @@ public class GalleriesController {
         scroller.setContent(pane);
     }
 
-    public void ShowPaintingsForGallery(int galId) throws GalleryException {
+    public void ShowPaintings(int id, String forWhat) throws GalleryException {
     }
 
     @FXML
