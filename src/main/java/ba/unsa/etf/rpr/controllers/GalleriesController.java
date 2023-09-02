@@ -116,6 +116,16 @@ public class GalleriesController {
             stackPane.getChildren().addAll(imageView, rect, galName);
             stackPane.setAlignment(Pos.CENTER);
 
+            stackPane.setOnMouseClicked(event -> {
+                try {
+                    // Clear existing content in pane
+                    pane.getChildren().clear();
+                    ShowPaintings(artist.getId(), "artist");
+                } catch (GalleryException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+
             pane.add(stackPane, column, row);
             column++;
             if (column == 3) {
