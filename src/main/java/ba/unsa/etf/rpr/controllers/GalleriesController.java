@@ -4,6 +4,7 @@ import ba.unsa.etf.rpr.business.ArtistManager;
 import ba.unsa.etf.rpr.business.GalleryManager;
 import ba.unsa.etf.rpr.domain.Artist;
 import ba.unsa.etf.rpr.domain.Gallery;
+import ba.unsa.etf.rpr.domain.Painting;
 import ba.unsa.etf.rpr.exceptions.GalleryException;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -63,7 +64,7 @@ public class GalleriesController {
             stackPane.getChildren().addAll(imageView, rect, galName);
             stackPane.setAlignment(Pos.CENTER);
 
-
+         //   stackPane.setOnMouseClicked(event -> ShowPaintingsForGallery(gal.getId()));
             pane.add(stackPane, column, row);
             column++;
             if (column == 3) {
@@ -102,7 +103,6 @@ public class GalleriesController {
             stackPane.getChildren().addAll(imageView, rect, galName);
             stackPane.setAlignment(Pos.CENTER);
 
-
             pane.add(stackPane, column, row);
             column++;
             if (column == 3) {
@@ -111,6 +111,9 @@ public class GalleriesController {
             }
         }
         scroller.setContent(pane);
+    }
+
+    public void ShowPaintingsForGallery(int galId) throws GalleryException {
     }
 
     @FXML
