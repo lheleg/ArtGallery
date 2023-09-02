@@ -12,7 +12,6 @@ public class Artist implements Idable{
     private String firstName;
     private String lastName;
     private String style;
-
     private String image;
 
     public int getId() {

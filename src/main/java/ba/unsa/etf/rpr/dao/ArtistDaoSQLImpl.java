@@ -27,6 +27,7 @@ public class ArtistDaoSQLImpl extends AbstractDao<Artist> implements ArtistDao{
             art.setFirstName(rs.getString("firstName"));
             art.setLastName(rs.getString("lastName"));
             art.setStyle(rs.getString("style"));
+            art.setImage(rs.getString("image"));
             return art;
         } catch (SQLException e) {
             throw new GalleryException(e.getMessage(), e);
