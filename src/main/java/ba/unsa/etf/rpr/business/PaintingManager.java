@@ -9,6 +9,7 @@ import ba.unsa.etf.rpr.exceptions.GalleryException;
 import java.util.List;
 
 public class PaintingManager {
+
     /**
      * Deletes paining
      *
@@ -26,6 +27,7 @@ public class PaintingManager {
         }
 
     }
+
     /**
      * Adds painting
      *

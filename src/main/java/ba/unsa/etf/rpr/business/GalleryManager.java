@@ -10,6 +10,7 @@ import java.util.List;
  * The type Gallery manager
  */
 public class GalleryManager {
+
     /**
      * Deletes gallery
      *
@@ -27,6 +28,7 @@ public class GalleryManager {
         }
 
     }
+
     /**
      * Adds gallery
      *
