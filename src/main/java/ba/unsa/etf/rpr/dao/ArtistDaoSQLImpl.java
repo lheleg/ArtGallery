@@ -1,9 +1,11 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Artist;
+import ba.unsa.etf.rpr.domain.Gallery;
 import ba.unsa.etf.rpr.exceptions.GalleryException;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -47,6 +49,19 @@ public class ArtistDaoSQLImpl extends AbstractDao<Artist> implements ArtistDao{
 
     @Override
     public List<Artist> fetchArtists() throws GalleryException {
-        return null;
+        List<Artist> artists = new ArrayList<>();
+        try{
+            ResultSet resultSet = getConnection().createStatement().executeQuery("SELECT * FROM Artists");
+            while (resultSet.next()) {
+                Artist artist = row2object(resultSet);
+                artists.add(artist);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (GalleryException e) {
+            e.printStackTrace();
+        }
+        //return the list of artists
+        return artists;
     }
 }
