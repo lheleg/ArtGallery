@@ -4,6 +4,7 @@ import ba.unsa.etf.rpr.domain.Artist;
 import ba.unsa.etf.rpr.exceptions.GalleryException;
 
 import java.sql.*;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -40,5 +41,10 @@ public class ArtistDaoSQLImpl extends AbstractDao<Artist> implements ArtistDao{
         row.put("lastName", ob.getLastName());
         row.put("style", ob.getStyle());
         return row;
+    }
+
+    @Override
+    public List<Artist> fetchArtists() throws GalleryException {
+        return null;
     }
 }
