@@ -2,6 +2,9 @@ package ba.unsa.etf.rpr.dao;
 
 
 import ba.unsa.etf.rpr.domain.Artist;
+import ba.unsa.etf.rpr.exceptions.GalleryException;
+
+import java.util.List;
 
 /**
  * Dao interface for Artist domain bean
@@ -9,4 +12,5 @@ import ba.unsa.etf.rpr.domain.Artist;
  * @author Lejla Heleg
  */
 public interface ArtistDao extends Dao<Artist> {
+    public List<Artist> fetchArtists() throws GalleryException;
 }
