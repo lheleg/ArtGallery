@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.dao.DaoFactory;
+import ba.unsa.etf.rpr.domain.Artist;
 import ba.unsa.etf.rpr.domain.Gallery;
 import ba.unsa.etf.rpr.domain.Painting;
 import ba.unsa.etf.rpr.exceptions.GalleryException;
@@ -55,5 +56,15 @@ public class PaintingManager {
      */
     public List<Painting> getByGallery(Gallery gallery) throws GalleryException {
         return DaoFactory.paintingDao().getByGallery(gallery);
+    }
+
+    /**
+     * Get paintings by Artist
+     *
+     * @param artist the gallery
+     * @return the list of paintings
+     */
+    public List<Painting> getByArtist(Artist artist) throws GalleryException {
+        return DaoFactory.paintingDao().getByGallery(artist);
     }
 }
