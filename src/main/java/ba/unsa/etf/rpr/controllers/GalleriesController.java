@@ -3,10 +3,12 @@ package ba.unsa.etf.rpr.controllers;
 import ba.unsa.etf.rpr.business.ArtistManager;
 import ba.unsa.etf.rpr.business.GalleryManager;
 import ba.unsa.etf.rpr.business.PaintingManager;
+import ba.unsa.etf.rpr.dao.GalleryDao;
 import ba.unsa.etf.rpr.domain.Artist;
 import ba.unsa.etf.rpr.domain.Gallery;
 import ba.unsa.etf.rpr.domain.Painting;
 import ba.unsa.etf.rpr.exceptions.GalleryException;
+import com.mysql.cj.log.NullLogger;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -19,6 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
@@ -66,7 +69,15 @@ public class GalleriesController {
             stackPane.getChildren().addAll(imageView, rect, galName);
             stackPane.setAlignment(Pos.CENTER);
 
-         //   stackPane.setOnMouseClicked(event -> ShowPaintings(gal.getId(), gallery));
+            stackPane.setOnMouseClicked(event -> {
+                try {
+                    // Clear existing content in pane
+                    pane.getChildren().clear();
+                    ShowPaintings(gal.getId(), "gallery");
+                } catch (GalleryException e) {
+                    throw new RuntimeException(e);
+                }
+            });
             pane.add(stackPane, column, row);
             column++;
             if (column == 3) {
@@ -133,24 +144,26 @@ public class GalleriesController {
 
         for (Painting painting : paintings) {
             ImageView imageView = new ImageView(new Image(painting.getImage()));
-            imageView.setFitWidth(190);
-            imageView.setFitHeight(240);
-            Rectangle rect = new Rectangle(imageView.getFitWidth()+5, imageView.getFitHeight()+5,
-                    new LinearGradient(0, 1.4, 0, 0, true, javafx.scene.paint.CycleMethod.NO_CYCLE,
-                            new Stop(0, Color.BLACK), new Stop(1, Color.TRANSPARENT)));
-            rect.setArcHeight(10);
-            rect.setArcWidth(10);
+            imageView.setFitWidth(150);
+            imageView.setFitHeight(200);
+            Rectangle rect = new Rectangle(imageView.getFitWidth()+55, imageView.getFitHeight()+55);
+            rect.setFill(Color.web("#5d4037"));
 
-            Label galName = new Label(painting.getTitle());
-            galName.setTextFill(Color.INDIANRED);
-            galName.setFont(Font.font(null, FontWeight.BOLD, 18));
-            galName.setAlignment(Pos.CENTER);
+            Rectangle rect1 = new Rectangle(imageView.getFitWidth()+35, imageView.getFitHeight()+35);
+            rect1.setFill(Color.WHITE);
 
-            StackPane stackPane = new StackPane();
-            stackPane.getChildren().addAll(imageView, rect, galName);
+            Label paiTitle = new Label(painting.getTitle());
+            paiTitle.setTextFill(Color.BLACK);
+            paiTitle.setFont(Font.font(12));
+            paiTitle.setAlignment(Pos.CENTER);
+
+            StackPane stackPane = new StackPane(rect, rect1, imageView);
             stackPane.setAlignment(Pos.CENTER);
 
-            pane.add(stackPane, column, row);
+            VBox vbox = new VBox(stackPane, paiTitle);
+            vbox.setAlignment(Pos.CENTER);
+
+            pane.add(vbox, column, row);
             column++;
             if (column == 3) {
                 column = 0;
@@ -162,7 +175,7 @@ public class GalleriesController {
 
     @FXML
     public void initialize() throws GalleryException {
-        ArtistDivs();
+        GalleryDivs();
 
         galleriesButton.setOnAction(event -> {
             // Clear existing content in pane

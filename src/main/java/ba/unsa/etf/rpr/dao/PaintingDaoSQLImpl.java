@@ -28,7 +28,7 @@ public class PaintingDaoSQLImpl extends AbstractDao<Painting> implements Paintin
             pai.setAvailable(rs.getBoolean("available"));
             pai.setTitle(rs.getString("title"));
             pai.setArtist(DaoFactory.artistDao().getById(rs.getInt("artistId")));
-            pai.setGallery(DaoFactory.galleryDao().getById(rs.getInt("paintingId")));
+            pai.setGallery(DaoFactory.galleryDao().getById(rs.getInt("galleryId")));
             pai.setImage(rs.getString("image"));
             return pai;
         } catch (Exception e) {
