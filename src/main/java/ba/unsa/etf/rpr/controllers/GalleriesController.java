@@ -1,6 +1,8 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.business.ArtistManager;
 import ba.unsa.etf.rpr.business.GalleryManager;
+import ba.unsa.etf.rpr.domain.Artist;
 import ba.unsa.etf.rpr.domain.Gallery;
 import ba.unsa.etf.rpr.exceptions.GalleryException;
 import javafx.fxml.FXML;
@@ -28,6 +30,9 @@ public class GalleriesController {
     public Button galleriesButton;
     public Button artistsButton;
     private final GalleryManager g = new GalleryManager();
+
+    private final ArtistManager a = new ArtistManager();
+
     public void GalleryDivs() throws GalleryException {
         List<Gallery> galleries = g.fetchGalleries();
         int row = 0;
@@ -67,6 +72,45 @@ public class GalleriesController {
         scroller.setContent(pane);
     }
 
+    public void ArtistDivs() throws GalleryException {
+        List<Artist> artists = a.fetchArtists();
+        int row = 0;
+        int column = 0;
+        pane.setHgap(24);
+        pane.setVgap(15);
+        pane.setPadding(new Insets(30));
+        pane.setAlignment(Pos.CENTER);
+
+        for (Artist artist : artists) {
+            ImageView imageView = new ImageView(new Image(artist.getImage()));
+            imageView.setFitWidth(200);
+            imageView.setFitHeight(250);
+            Rectangle rect = new Rectangle(imageView.getFitWidth()+5, imageView.getFitHeight()+5,
+                    new LinearGradient(0, 1.4, 0, 0, true, javafx.scene.paint.CycleMethod.NO_CYCLE,
+                            new Stop(0, Color.LIGHTBLUE), new Stop(1, Color.TRANSPARENT)));
+            rect.setArcHeight(10);
+            rect.setArcWidth(10);
+
+            Label galName = new Label(artist.getFirstName() + " " + artist.getLastName());
+            galName.setTextFill(Color.WHITE);
+            galName.setFont(Font.font(null, FontWeight.BOLD, 18));
+            galName.setAlignment(Pos.CENTER);
+
+            StackPane stackPane = new StackPane();
+            stackPane.getChildren().addAll(imageView, rect, galName);
+            stackPane.setAlignment(Pos.CENTER);
+
+
+            pane.add(stackPane, column, row);
+            column++;
+            if (column == 3) {
+                column = 0;
+                row++;
+            }
+        }
+        scroller.setContent(pane);
+    }
+
     @FXML
     public void initialize() throws GalleryException {
         GalleryDivs();
@@ -85,7 +129,7 @@ public class GalleriesController {
             // Clear existing content in pane
             pane.getChildren().clear();
             try {
-                GalleryDivs();
+                ArtistDivs();
             } catch (GalleryException e) {
                 throw new RuntimeException(e);
             }

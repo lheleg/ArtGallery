@@ -54,7 +54,7 @@ public class ArtistManager {
     /**
      * Fetch artists
      *
-     * @return the list of artists
+     * @return the list of all artists
      */
     public List<Artist> fetchArtists() throws GalleryException {
         return DaoFactory.artistDao().fetchArtists();
