@@ -41,6 +41,7 @@ public class ArtistDaoSQLImpl extends AbstractDao<Artist> implements ArtistDao{
         row.put("firstName", ob.getFirstName());
         row.put("lastName", ob.getLastName());
         row.put("style", ob.getStyle());
+        row.put("image", ob.getImage());
         return row;
     }
 
