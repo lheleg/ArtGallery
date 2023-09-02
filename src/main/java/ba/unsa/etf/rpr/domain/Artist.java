@@ -13,6 +13,8 @@ public class Artist implements Idable{
     private String lastName;
     private String style;
 
+    private String image;
+
     public int getId() {
         return id;
     }
@@ -66,6 +68,14 @@ public class Artist implements Idable{
     @Override
     public int hashCode() {
         return Objects.hash(id, firstName, lastName, style);
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
 
