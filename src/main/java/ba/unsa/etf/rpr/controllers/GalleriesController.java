@@ -3,12 +3,10 @@ package ba.unsa.etf.rpr.controllers;
 import ba.unsa.etf.rpr.business.ArtistManager;
 import ba.unsa.etf.rpr.business.GalleryManager;
 import ba.unsa.etf.rpr.business.PaintingManager;
-import ba.unsa.etf.rpr.dao.GalleryDao;
 import ba.unsa.etf.rpr.domain.Artist;
 import ba.unsa.etf.rpr.domain.Gallery;
 import ba.unsa.etf.rpr.domain.Painting;
 import ba.unsa.etf.rpr.exceptions.GalleryException;
-import com.mysql.cj.log.NullLogger;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -140,7 +138,7 @@ public class GalleriesController {
         int row = 0;
         int column = 0;
         pane.setHgap(100);
-        pane.setVgap(15);
+        pane.setVgap(30);
         pane.setPadding(new Insets(7,7,0,45));
         pane.setAlignment(Pos.CENTER);
 
