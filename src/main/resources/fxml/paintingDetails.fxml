@@ -62,7 +62,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </TextField>
-      <ImageView fx:id="cancelImageView" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cancelImageView" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/cancel.png" />
          </image>
