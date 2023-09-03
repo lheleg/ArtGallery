@@ -177,6 +177,13 @@ public class GalleriesController {
             VBox vbox = new VBox(stackPane, paiTitle);
             vbox.setAlignment(Pos.CENTER);
 
+            vbox.setOnMouseClicked(event -> {
+                try {
+                    ShowPaintingDetails(painting.getId());
+                } catch (GalleryException e) {
+                    throw new RuntimeException(e);
+                }
+            });
             pane.add(vbox, column, row);
             column++;
             if (column == 3) {
