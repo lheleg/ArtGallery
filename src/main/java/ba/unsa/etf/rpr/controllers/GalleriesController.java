@@ -203,8 +203,6 @@ public class GalleriesController {
             controller.setPainting(painting);
             Parent root = fxmlLoader.load();
             DetailStage detailsStage = DetailStage.getInstance();
-            detailsStage.getIcons().add(new Image("images/ikonica.png"));
-            detailsStage.initStyle(StageStyle.TRANSPARENT);
             Scene scene = new Scene(root);
             scene.setFill(Color.TRANSPARENT);
             detailsStage.setScene(scene);
