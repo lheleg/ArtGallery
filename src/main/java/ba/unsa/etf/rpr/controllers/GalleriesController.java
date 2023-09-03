@@ -201,6 +201,8 @@ public class GalleriesController {
 
             PaintingDetailsController controller = new PaintingDetailsController();
             controller.setPainting(painting);
+
+            fxmlLoader.setController(controller);
             Parent root = fxmlLoader.load();
             DetailStage detailsStage = DetailStage.getInstance();
             Scene scene = new Scene(root);

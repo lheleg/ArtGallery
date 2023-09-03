@@ -9,11 +9,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 public class PaintingDetailsController {
-
-
     public ScrollPane messPane;
     private Painting painting;
-    private boolean windowOpened;
 
     /**
      * Gets painting
@@ -40,7 +37,9 @@ public class PaintingDetailsController {
 
     @FXML
     private void initialize() throws GalleryException {
-        Text mess = new Text("hello");
+        String availability = "available";
+        if (!(getPaining().getAvailable())) availability = "not " + availability;
+        Text mess = new Text("Hello,\n" + painting.getTitle() + " by " + painting.getArtist().getFirstName() + " " + painting.getArtist().getLastName() + "\nis " + availability + " for sale.");
         messPane.setContent(mess);
     }
 }
