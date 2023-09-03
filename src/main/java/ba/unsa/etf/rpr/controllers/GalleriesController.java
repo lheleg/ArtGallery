@@ -17,7 +17,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -41,8 +40,6 @@ public class GalleriesController {
     public GridPane pane = new GridPane();
     public Button galleriesButton;
     public Button artistsButton;
-
-    public ScrollPane messPane;
     private final GalleryManager g = new GalleryManager();
 
     private final ArtistManager a = new ArtistManager();
@@ -182,7 +179,7 @@ public class GalleriesController {
 
             vbox.setOnMouseClicked(event -> {
                 try {
-                    ShowPaintingDetails(painting.getId());
+                    ShowPaintingDetails(painting);
                 } catch (GalleryException e) {
                     throw new RuntimeException(e);
                 }
@@ -197,12 +194,11 @@ public class GalleriesController {
         scroller.setContent(pane);
     }
 
-    public void ShowPaintingDetails(int paintingId) throws GalleryException{
+    public void ShowPaintingDetails(Painting painting) throws GalleryException{
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/paintingDetails.fxml"));
             PaintingDetailsController controller = new PaintingDetailsController();
-          //  controller.setUser(user);
-            fxmlLoader.setController(controller);
+            controller.setPainting(painting);
             Parent root = fxmlLoader.load();
             Stage detailsStage = new Stage();
             detailsStage.getIcons().add(new Image("images/ikonica.png"));
