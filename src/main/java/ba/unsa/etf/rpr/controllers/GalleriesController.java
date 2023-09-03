@@ -181,6 +181,10 @@ public class GalleriesController {
         scroller.setContent(pane);
     }
 
+    public void ShowPaintingDetails(int paintingId) throws GalleryException{
+
+    }
+
     @FXML
     public void initialize() throws GalleryException {
         GalleryDivs();
