@@ -11,9 +11,10 @@ import javafx.stage.Stage;
 
 import java.awt.*;
 
-
+/**
+ * The type Painting detail controller
+ */
 public class PaintingDetailsController {
-
     @FXML
     public Button webButton;
     @FXML

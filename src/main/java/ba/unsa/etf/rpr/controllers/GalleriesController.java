@@ -30,12 +30,12 @@ import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * The type Art Gallery page controller
+ */
 public class GalleriesController {
     public ScrollPane scroller;
     public GridPane pane = new GridPane();
