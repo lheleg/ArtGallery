@@ -4,11 +4,11 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
@@ -62,13 +62,10 @@
             <Insets left="5.0" />
          </GridPane.margin>
       </ImageView>
-      <Pane fx:id="messPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 3;" GridPane.rowIndex="1">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 5;" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </GridPane.margin>
-      </Pane>
+      </ScrollPane>
    </children>
 </GridPane>

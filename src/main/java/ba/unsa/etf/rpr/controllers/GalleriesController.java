@@ -42,7 +42,7 @@ public class GalleriesController {
     public Button galleriesButton;
     public Button artistsButton;
 
-    public TextField textField;
+    public ScrollPane messPane;
     private final GalleryManager g = new GalleryManager();
 
     private final ArtistManager a = new ArtistManager();
