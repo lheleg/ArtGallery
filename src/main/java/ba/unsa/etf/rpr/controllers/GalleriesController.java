@@ -12,6 +12,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -27,7 +29,10 @@ import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.util.List;
 
 public class GalleriesController {
@@ -183,7 +188,23 @@ public class GalleriesController {
     }
 
     public void ShowPaintingDetails(int paintingId) throws GalleryException{
-
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/paintingDetails.fxml"));
+            PaintingDetailsController controller = new PaintingDetailsController();
+          //  controller.setUser(user);
+            fxmlLoader.setController(controller);
+            Parent root = fxmlLoader.load();
+            Stage detailsStage = new Stage();
+            detailsStage.getIcons().add(new Image("images/ikonica.png"));
+            detailsStage.initStyle(StageStyle.TRANSPARENT);
+            Scene scene = new Scene(root);
+            scene.setFill(Color.TRANSPARENT);
+            detailsStage.setScene(scene);
+            detailsStage.setResizable(false);
+            detailsStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
