@@ -32,7 +32,6 @@ public class AppFX extends Application {
         stage.initStyle(StageStyle.TRANSPARENT); // hides upper window bar
         stage.setResizable(false);
         stage.show();
-       // Stage secondStage
     }
 
     public static void main(String[] args) {
