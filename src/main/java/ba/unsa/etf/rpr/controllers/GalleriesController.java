@@ -4,6 +4,7 @@ import ba.unsa.etf.rpr.business.ArtistManager;
 import ba.unsa.etf.rpr.business.GalleryManager;
 import ba.unsa.etf.rpr.business.PaintingManager;
 import ba.unsa.etf.rpr.domain.Artist;
+import ba.unsa.etf.rpr.domain.DetailStage;
 import ba.unsa.etf.rpr.domain.Gallery;
 import ba.unsa.etf.rpr.domain.Painting;
 import ba.unsa.etf.rpr.exceptions.GalleryException;
@@ -197,10 +198,11 @@ public class GalleriesController {
     public void ShowPaintingDetails(Painting painting) throws GalleryException{
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/paintingDetails.fxml"));
+
             PaintingDetailsController controller = new PaintingDetailsController();
             controller.setPainting(painting);
             Parent root = fxmlLoader.load();
-            Stage detailsStage = new Stage();
+            DetailStage detailsStage = DetailStage.getInstance();
             detailsStage.getIcons().add(new Image("images/ikonica.png"));
             detailsStage.initStyle(StageStyle.TRANSPARENT);
             Scene scene = new Scene(root);

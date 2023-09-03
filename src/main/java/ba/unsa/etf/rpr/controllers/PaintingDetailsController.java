@@ -13,6 +13,7 @@ public class PaintingDetailsController {
 
     public ScrollPane messPane;
     private Painting painting;
+    private boolean windowOpened;
 
     /**
      * Gets painting
