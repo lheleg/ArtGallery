@@ -212,7 +212,6 @@ public class GalleriesController {
             detailsStage.setScene(scene);
             detailsStage.setResizable(false);
             detailsStage.show();
-            textField.setText("hello");
         } catch (IOException e) {
             e.printStackTrace();
         }
