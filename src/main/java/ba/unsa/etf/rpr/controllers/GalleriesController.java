@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -40,6 +41,8 @@ public class GalleriesController {
     public GridPane pane = new GridPane();
     public Button galleriesButton;
     public Button artistsButton;
+
+    public TextField textField;
     private final GalleryManager g = new GalleryManager();
 
     private final ArtistManager a = new ArtistManager();
@@ -209,6 +212,7 @@ public class GalleriesController {
             detailsStage.setScene(scene);
             detailsStage.setResizable(false);
             detailsStage.show();
+            textField.setText("hello");
         } catch (IOException e) {
             e.printStackTrace();
         }
