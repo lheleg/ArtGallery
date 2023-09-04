@@ -42,7 +42,6 @@ public class HomeController {
     }
     @FXML
     private void showRegister(MouseEvent event) throws IOException {
-        this.primaryStage.close();
 
         // Load the FXML file for new stage
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/register.fxml"));
@@ -62,22 +61,21 @@ public class HomeController {
 
     @FXML
     private void showLogin(MouseEvent event) throws IOException {
-        this.primaryStage.close();
 
         // Load the FXML file for new stage
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
         Parent root = loader.load();
 
         // Create a new stage and set its scene
-        Stage stageArt = new Stage();
-        stageArt.setTitle("Login");
-        stageArt.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        Stage stage = new Stage();
+        stage.setTitle("Login");
+        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
 
-        stageArt.getIcons().add(new Image("/images/ikonica.png"));
-        //  stageArt.initStyle(StageStyle.TRANSPARENT); // hides upper window bar
-        stageArt.setResizable(false);
+        stage.getIcons().add(new Image("/images/ikonica.png"));
+        stage.initStyle(StageStyle.TRANSPARENT); // hides upper window bar
+        stage.setResizable(false);
         // Show the new stage
-        stageArt.show();
+        stage.show();
     }
 
     @FXML

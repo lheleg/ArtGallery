@@ -67,7 +67,6 @@ public class LogInController {
 
     @FXML
     public void initialize() {
-        loginButton.setDisable(true);
     }
 
     @FXML
