@@ -33,6 +33,7 @@ public class LogInController {
     @FXML
     public Label wrongPassword;
 
+
     @FXML
     public void initialize() {
     }
