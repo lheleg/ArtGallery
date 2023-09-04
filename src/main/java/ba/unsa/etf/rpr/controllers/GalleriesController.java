@@ -3,10 +3,7 @@ package ba.unsa.etf.rpr.controllers;
 import ba.unsa.etf.rpr.business.ArtistManager;
 import ba.unsa.etf.rpr.business.GalleryManager;
 import ba.unsa.etf.rpr.business.PaintingManager;
-import ba.unsa.etf.rpr.domain.Artist;
-import ba.unsa.etf.rpr.domain.DetailStage;
-import ba.unsa.etf.rpr.domain.Gallery;
-import ba.unsa.etf.rpr.domain.Painting;
+import ba.unsa.etf.rpr.domain.*;
 import ba.unsa.etf.rpr.exceptions.GalleryException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,6 +38,8 @@ public class GalleriesController {
     public GridPane pane = new GridPane();
     public Button galleriesButton;
     public Button artistsButton;
+
+    private User user;
     private final GalleryManager g = new GalleryManager();
 
     private final ArtistManager a = new ArtistManager();
@@ -243,5 +242,13 @@ public class GalleriesController {
     @FXML
     private void closeAction(MouseEvent event) {
         ((Node)(event.getSource())).getScene().getWindow().hide();
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

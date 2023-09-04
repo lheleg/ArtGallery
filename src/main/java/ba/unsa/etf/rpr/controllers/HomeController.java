@@ -41,36 +41,36 @@ public class HomeController {
         this.primaryStage = primaryStage;
     }
     @FXML
-    private void showGalleries(MouseEvent event) throws IOException {
+    private void showRegister(MouseEvent event) throws IOException {
         this.primaryStage.close();
 
         // Load the FXML file for new stage
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/galleries.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/register.fxml"));
         Parent root = loader.load();
 
         // Create a new stage and set its scene
-        Stage stageGall = new Stage();
-        stageGall.setTitle("Our galleries");
-        stageGall.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        Stage stage = new Stage();
+        stage.setTitle("Register");
+        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
 
-        stageGall.getIcons().add(new Image("/images/ikonica.png"));
-        stageGall.initStyle(StageStyle.TRANSPARENT); // hides upper window bar
-        stageGall.setResizable(false);
+        stage.getIcons().add(new Image("/images/ikonica.png"));
+        stage.initStyle(StageStyle.TRANSPARENT); // hides upper window bar
+        stage.setResizable(false);
         // Show the new stage
-        stageGall.show();
+        stage.show();
     }
 
     @FXML
-    private void showArtists(MouseEvent event) throws IOException {
+    private void showLogin(MouseEvent event) throws IOException {
         this.primaryStage.close();
 
         // Load the FXML file for new stage
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/artists.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
         Parent root = loader.load();
 
         // Create a new stage and set its scene
         Stage stageArt = new Stage();
-        stageArt.setTitle("Our artists");
+        stageArt.setTitle("Login");
         stageArt.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
 
         stageArt.getIcons().add(new Image("/images/ikonica.png"));

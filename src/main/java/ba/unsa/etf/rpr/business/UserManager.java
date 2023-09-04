@@ -5,6 +5,7 @@ import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.GalleryException;
 
 public class UserManager {
+
     /**
      * Deletes user
      *
@@ -43,5 +44,9 @@ public class UserManager {
      */
     public User getById(int id) throws GalleryException {
         return DaoFactory.userDao().getById(id);
+    }
+
+    public User findUserByUsername(String username) {
+        return null;
     }
 }

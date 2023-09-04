@@ -3,6 +3,7 @@ package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.GalleryException;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
@@ -43,5 +44,14 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao {
         row.put("firstName", ob.getFirstName());
         row.put("lastName", ob.getLastName());
         return row;
+    }
+    public int totalUsers() throws SQLException{
+        int total = 0;
+        String query = "SELECT COUNT(username) AS total FROM USERS";
+        try (PreparedStatement st = AbstractDao.getConnection().prepareStatement(query)) {
+            ResultSet result = st.executeQuery();
+            if (result.next()) total = result.getInt("total");
+        }
+        return total;
     }
 }

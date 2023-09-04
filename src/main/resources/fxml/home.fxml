@@ -27,7 +27,7 @@
             <Image url="@../images/slika1.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="clickableGall" alignment="CENTER" onMouseClicked="#showGalleries" text="r e g i s t e r" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <Label fx:id="clickableGall" alignment="CENTER" onMouseClicked="#showRegister" text="r e g i s t e r" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="120.0" left="217.0" />
          </GridPane.margin>
@@ -38,7 +38,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Label fx:id="clickableArt" alignment="CENTER" layoutX="138.0" layoutY="160.0" onMouseClicked="#showArtists" text="l o g   i n" GridPane.columnIndex="2" GridPane.rowIndex="1">
+      <Label fx:id="clickableArt" alignment="CENTER" layoutX="138.0" layoutY="160.0" onMouseClicked="#showLogin" text="l o g   i n" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <font>
             <Font name="Marlett" size="19.0" />
          </font>
