@@ -200,6 +200,7 @@ public class GalleriesController {
 
             PaintingDetailsController controller = new PaintingDetailsController();
             controller.setPainting(painting);
+            controller.setUser(this.user);
 
             fxmlLoader.setController(controller);
             Parent root = fxmlLoader.load();
