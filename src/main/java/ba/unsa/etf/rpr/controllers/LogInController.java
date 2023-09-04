@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -63,8 +64,15 @@ public class LogInController {
     @FXML
     public Label wrongPasswordLabel;
 
+    /**
+     * The Cancel image view
+     */
     @FXML
-    public void initialize() {
+    public ImageView cancelImageView;
+
+    private Stage primaryStage;
+
+    public void initialize() throws GalleryException  {
         loginButton.setOnAction(actionEvent -> {
             String username = usernameField.getText().trim();
             String password = passwordField.getText().trim();
@@ -85,7 +93,7 @@ public class LogInController {
 
             //System.out.println(username);
             User user = new User();
-
+            System.out.println(user.getId());
             if (textFieldsFilled) {
                 // Check the input of username
                 UserManager u = new UserManager();
@@ -111,7 +119,9 @@ public class LogInController {
                             stage.setResizable(false);
                             stage.show();
 
+                            this.primaryStage.close();
                             ((Stage) usernameField.getScene().getWindow()).close();
+
 
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -124,6 +134,11 @@ public class LogInController {
 
             }
         });
+
+        cancelImageView.setOnMouseClicked( mouseEvent -> {
+            Stage stage = (Stage) cancelImageView.getScene().getWindow();
+            stage.close();
+        });
     }
 
 
@@ -133,4 +148,7 @@ public class LogInController {
     }
 
 
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
 }

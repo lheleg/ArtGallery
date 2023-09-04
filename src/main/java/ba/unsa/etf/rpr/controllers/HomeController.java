@@ -34,12 +34,8 @@ public class HomeController {
     @FXML
     private ImageView menuImageView;
 
-    public GridPane galleryPane = new GridPane();
     private Stage primaryStage;
 
-    public void setPrimaryStage(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-    }
     @FXML
     private void showRegister(MouseEvent event) throws IOException {
 
@@ -64,8 +60,12 @@ public class HomeController {
 
         // Load the FXML file for new stage
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
-        Parent root = loader.load();
 
+        LogInController controller = new LogInController();
+        controller.setPrimaryStage(this.primaryStage);
+
+        loader.setController(controller);
+        Parent root = loader.load();
         // Create a new stage and set its scene
         Stage stage = new Stage();
         stage.setTitle("Login");
@@ -88,5 +88,7 @@ public class HomeController {
     }
 
 
-
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
 }
