@@ -89,9 +89,8 @@ public class LogInController {
                 textFieldsFilled = false;
             }
 
-            //System.out.println(username);
             User user = new User();
-            System.out.println(user.getId());
+            //System.out.println(user.getId());
             if (textFieldsFilled) {
                 // Check the input of username
                 UserManager u = new UserManager();
@@ -105,7 +104,6 @@ public class LogInController {
                             Parent root = loader.load();
 
                             GalleriesController controller = loader.getController();
-
                             controller.setUser(user);
 
                             Stage stage = new Stage();
@@ -126,10 +124,12 @@ public class LogInController {
                         }
                     } else {
                         // Display an error message
-                        errorLabel.setText("Invalid username or password.");
+                        errorLabel.setText("Invalid password.");
                     }
+                }else {
+                    // Display an error message
+                    errorLabel.setText("Invalid username.");
                 }
-
             }
         });
 
@@ -138,13 +138,6 @@ public class LogInController {
             stage.close();
         });
     }
-
-
-    @FXML
-    private void closeAction(MouseEvent event) {
-        ((Node)(event.getSource())).getScene().getWindow().hide();
-    }
-
 
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
