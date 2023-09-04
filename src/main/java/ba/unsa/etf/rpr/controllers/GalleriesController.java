@@ -34,7 +34,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * The type Art Gallery page controller
+ * The type PicturePerfect page controller
  */
 public class GalleriesController {
     public ScrollPane scroller;
