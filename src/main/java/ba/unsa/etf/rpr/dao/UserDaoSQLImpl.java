@@ -56,6 +56,14 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao {
     }
 
     public User findUserByUsername(String username){
+        try {
+            ResultSet rs = getConnection().createStatement().executeQuery("SELECT id FROM Users WHERE username = '" + username + "'");
+            if(rs.next()){
+                return getById(rs.getInt(1));
+            }
+        } catch (SQLException | GalleryException e) {
+            throw new RuntimeException(e);
+        }
         return null;
     }
 }
