@@ -67,28 +67,91 @@ public class LogInController {
 
     @FXML
     public void initialize() {
+        loginButton.setOnAction(actionEvent -> {
+            String username = usernameField.getText().trim();
+            String password = passwordField.getText().trim();
+
+            boolean textFieldsFilled;
+            User user = new User();
+
+            if (username != "") {
+                wrongUsernameLabel.setText("");
+            } else wrongUsernameLabel.setText("This field cannot be empty.");
+
+            if (password != "") {
+                wrongPasswordLabel.setText("");
+                textFieldsFilled = true;
+            } else {
+                wrongPasswordLabel.setText("This field cannot be empty");
+                textFieldsFilled = false;
+            }
+
+            System.out.println(username);
+
+            if (textFieldsFilled) {
+                // Check the input of username
+                UserManager u = new UserManager();
+                user = u.findUserByUsername(username);
+
+                if (user != null) {
+                    // Check the input of password
+                    if (Objects.equals(user.getPassword(), password)) {
+                        try {
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/galleries.fxml"));
+                            Parent root = loader.load();
+
+                            GalleriesController controller = loader.getController();
+
+                            controller.setUser(user);
+
+                            Stage stage = new Stage();
+                            stage.initStyle(StageStyle.TRANSPARENT);
+                            stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+
+                            stage.getIcons().add(new Image("/images/ikonica.png"));
+                            stage.initStyle(StageStyle.TRANSPARENT); // hides upper window bar
+                            stage.setResizable(false);
+                            stage.show();
+
+                            ((Stage) usernameField.getScene().getWindow()).close();
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        // Display an error message
+                        errorLabel.setText("Invalid username or password.");
+                        return;
+                    }
+                }
+
+            }
+        });
     }
 
     @FXML
-    private void loginHandle() throws GalleryException {
+    private void loginHandle(ActionEvent event) {
 
-        String username = usernameField.getText();
-        String password = passwordField.getText();
+        String username = usernameField.getText().trim();
+        String password = passwordField.getText().trim();
 
         boolean textFieldsFilled;
         User user = new User();
 
-        if (username.trim() != "") {
+
+        if (username != "") {
             wrongUsernameLabel.setText("");
         } else wrongUsernameLabel.setText("This field cannot be empty.");
 
-        if (password.trim() != "") {
+        if (password != "") {
             wrongPasswordLabel.setText("");
             textFieldsFilled = true;
         } else {
             wrongPasswordLabel.setText("This field cannot be empty");
             textFieldsFilled = false;
         }
+
+        System.out.println(username);
 
         if (textFieldsFilled) {
             // Check the input of username
@@ -114,6 +177,8 @@ public class LogInController {
                         stage.initStyle(StageStyle.TRANSPARENT); // hides upper window bar
                         stage.setResizable(false);
                         stage.show();
+
+                        ((Stage) usernameField.getScene().getWindow()).close();
 
                     } catch (IOException e) {
                         e.printStackTrace();
