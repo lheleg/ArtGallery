@@ -63,8 +63,6 @@ public class LogInController {
     @FXML
     public Label wrongPasswordLabel;
 
-
-
     @FXML
     public void initialize() {
         loginButton.setOnAction(actionEvent -> {
@@ -73,11 +71,11 @@ public class LogInController {
 
             boolean textFieldsFilled;
 
-            if (username.isEmpty()) {
+            if (!username.isEmpty()) {
                 wrongUsernameLabel.setText("");
             } else wrongUsernameLabel.setText("This field cannot be empty.");
 
-            if (password.isEmpty()) {
+            if (!password.isEmpty()) {
                 wrongPasswordLabel.setText("");
                 textFieldsFilled = true;
             } else {
