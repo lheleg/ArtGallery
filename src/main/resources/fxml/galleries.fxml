@@ -18,9 +18,9 @@
         <Cursor fx:constant="DEFAULT" />
     </cursor>
     <Pane prefHeight="600.0" prefWidth="80.0" style="-fx-background-color: #e2d5cb;">
-        <Label fx:id="gallLabel" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="-210.0" layoutY="250.0" prefHeight="80.0" prefWidth="500.0" rotate="-90.0" style="-fx-text-fill: #8b5349; -fx-background-color: #e2d5cb;" text="p i c t u r e - p e r f e c t" textAlignment="CENTER" wrapText="true">
+        <Label fx:id="gallLabel" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="-235.0" layoutY="280.0" prefHeight="80.0" prefWidth="550.0" rotate="-90.0" style="-fx-text-fill: #8b5349; -fx-background-color: #e2d5cb;" text="p  i  c  t  u  r  e    p  e  r  f  e  c  t" textAlignment="CENTER" wrapText="true">
             <font>
-                <Font name="Marlett" size="37.0" />
+                <Font name="Marlett" size="30.0" />
             </font>
             <textFill>
                 <LinearGradient endX="1.0" endY="1.0">
