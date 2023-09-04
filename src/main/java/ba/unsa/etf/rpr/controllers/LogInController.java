@@ -83,8 +83,9 @@ public class LogInController {
                 textFieldsFilled = false;
             }
 
-            System.out.println(username);
+            //System.out.println(username);
             User user = new User();
+
             if (textFieldsFilled) {
                 // Check the input of username
                 UserManager u = new UserManager();

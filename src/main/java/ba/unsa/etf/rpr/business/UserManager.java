@@ -47,6 +47,6 @@ public class UserManager {
     }
 
     public User findUserByUsername(String username) {
-        return null;
+        return DaoFactory.userDao().findUserByUsername(username);
     }
 }

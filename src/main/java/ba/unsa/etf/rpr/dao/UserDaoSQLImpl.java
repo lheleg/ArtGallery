@@ -54,4 +54,8 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao {
         }
         return total;
     }
+
+    public User findUserByUsername(String username){
+        return null;
+    }
 }
