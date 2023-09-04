@@ -3,8 +3,10 @@ package ba.unsa.etf.rpr.controllers;
 import ba.unsa.etf.rpr.domain.Painting;
 import ba.unsa.etf.rpr.exceptions.GalleryException;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -12,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -48,17 +51,21 @@ public class PaintingDetailsController {
     @FXML
     public void initialize() throws GalleryException {
         String availability = "available";
-        String greeting = ". . . y a y . . .";
         if (!painting.getAvailable()) {
             availability = "not " + availability;
-            greeting = ". . . o o p s . . .";
+            webButton.setDisable(true);
         };
-        Text mess = new Text(greeting + "\n" + painting.getTitle() + " by " + painting.getArtist().getFirstName() + " " + painting.getArtist().getLastName() + "\nis " + availability + " for sale!");
+        Text mess = new Text("Dear   ," + "\n" + painting.getTitle() + " by " + painting.getArtist().getFirstName() + " " + painting.getArtist().getLastName() + "\nis " + availability + " for sale!");
+        Text greet = new Text("- team  pp");
 
         mess.setFont(Font.font(null, FontWeight.MEDIUM, 18));
-        mess.setTextAlignment(TextAlignment.CENTER);
 
-        messPane.setContent(mess);
+        greet.setFont(Font.font(null, FontWeight.MEDIUM, 18));
+
+        VBox vbox = new VBox(mess, greet);
+        vbox.setAlignment(Pos.CENTER);
+
+        messPane.setContent(vbox);
 
         cancelImageView.setOnMouseClicked( mouseEvent -> {
             Stage stage = (Stage) cancelImageView.getScene().getWindow();

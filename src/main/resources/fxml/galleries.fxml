@@ -18,7 +18,7 @@
         <Cursor fx:constant="DEFAULT" />
     </cursor>
     <Pane prefHeight="600.0" prefWidth="80.0" style="-fx-background-color: #e2d5cb;">
-        <Label fx:id="gallLabel" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="-210.0" layoutY="250.0" prefHeight="80.0" prefWidth="500.0" rotate="-90.0" style="-fx-text-fill: #8b5349; -fx-background-color: #e2d5cb;" text="a  r  t     g  a  l  l  e  r  y" textAlignment="CENTER" wrapText="true">
+        <Label fx:id="gallLabel" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="-210.0" layoutY="250.0" prefHeight="80.0" prefWidth="500.0" rotate="-90.0" style="-fx-text-fill: #8b5349; -fx-background-color: #e2d5cb;" text="p i c t u r e - p e r f e c t" textAlignment="CENTER" wrapText="true">
             <font>
                 <Font name="Marlett" size="37.0" />
             </font>
@@ -42,7 +42,7 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
         </Label>
-        <ImageView fx:id="cancelImageView" fitHeight="20.0" fitWidth="20.0" layoutX="5.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#closeAction">
+        <ImageView fx:id="cancelImageView" fitHeight="20.0" fitWidth="20.0" layoutX="5.0" layoutY="2.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/cancel.png" />
             </image>
