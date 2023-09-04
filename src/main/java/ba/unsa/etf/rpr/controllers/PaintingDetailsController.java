@@ -54,6 +54,7 @@ public class PaintingDetailsController {
             greeting = ". . . o o p s . . .";
         };
         Text mess = new Text(greeting + "\n" + painting.getTitle() + " by " + painting.getArtist().getFirstName() + " " + painting.getArtist().getLastName() + "\nis " + availability + " for sale!");
+
         mess.setFont(Font.font(null, FontWeight.MEDIUM, 18));
         mess.setTextAlignment(TextAlignment.CENTER);
 
