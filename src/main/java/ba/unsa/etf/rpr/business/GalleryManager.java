@@ -59,4 +59,8 @@ public class GalleryManager {
     public List<Gallery> fetchGalleries() throws GalleryException {
         return DaoFactory.galleryDao().fetchGalleries();
     }
+
+    public Gallery getGalleryByUserId(int userId) throws GalleryException{
+        return DaoFactory.galleryDao().getGalleryByUserId(userId);
+    }
 }
