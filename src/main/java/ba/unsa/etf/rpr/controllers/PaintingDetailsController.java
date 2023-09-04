@@ -5,8 +5,11 @@ import ba.unsa.etf.rpr.exceptions.GalleryException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -45,8 +48,15 @@ public class PaintingDetailsController {
     @FXML
     public void initialize() throws GalleryException {
         String availability = "available";
-        if (!painting.getAvailable()) availability = "not " + availability;
-        Text mess = new Text("Hello,\n" + painting.getTitle() + " by " + painting.getArtist().getFirstName() + " " + painting.getArtist().getLastName() + "\nis " + availability + " for sale.");
+        String greeting = ". . . y a y . . .";
+        if (!painting.getAvailable()) {
+            availability = "not " + availability;
+            greeting = ". . . o o p s . . .";
+        };
+        Text mess = new Text(greeting + "\n" + painting.getTitle() + " by " + painting.getArtist().getFirstName() + " " + painting.getArtist().getLastName() + "\nis " + availability + " for sale!");
+        mess.setFont(Font.font(null, FontWeight.MEDIUM, 18));
+        mess.setTextAlignment(TextAlignment.CENTER);
+
         messPane.setContent(mess);
 
         cancelImageView.setOnMouseClicked( mouseEvent -> {

@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -25,10 +24,6 @@ public class HomeController {
 
     @FXML
     public GridPane root;
-    @FXML
-    private Label clickableGall;
-    @FXML
-    private Label clickableArt;
 
     @FXML
     private ImageView closeImageView;
