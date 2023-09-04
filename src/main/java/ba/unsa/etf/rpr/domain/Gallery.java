@@ -13,6 +13,15 @@ public class Gallery implements Idable{
     private User user;
     private String image;
 
+    public Gallery(){}
+
+    public Gallery(String name, String url, User user, String image) {
+        this.name = name;
+        this.url = url;
+        this.user = user;
+        this.image = image;
+    }
+
     public int getId() {
         return id;
     }

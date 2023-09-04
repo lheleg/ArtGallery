@@ -11,5 +11,7 @@ import java.util.List;
  * @author Lejla Heleg
  */
 public interface GalleryDao extends Dao<Gallery>{
+
+    public Gallery getGalleryByUserId(int userId);
     public List<Gallery> fetchGalleries() throws GalleryException;
 }

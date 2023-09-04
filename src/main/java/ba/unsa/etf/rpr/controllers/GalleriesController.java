@@ -40,11 +40,18 @@ public class GalleriesController {
     public Button artistsButton;
 
     private User user;
+
     private final GalleryManager g = new GalleryManager();
+
+    private final Gallery myGallery = new Gallery();
 
     private final ArtistManager a = new ArtistManager();
 
     private final PaintingManager p = new PaintingManager();
+
+    public GalleriesController() throws GalleryException {
+    }
+
     public void GalleryDivs() throws GalleryException {
         List<Gallery> galleries = g.fetchGalleries();
         int row = 0;
@@ -243,10 +250,6 @@ public class GalleriesController {
     @FXML
     private void closeAction(MouseEvent event) {
         ((Node)(event.getSource())).getScene().getWindow().hide();
-    }
-
-    public User getUser() {
-        return user;
     }
 
     public void setUser(User user) {
