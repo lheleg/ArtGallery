@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.domain.SecondaryStage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -9,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -67,8 +69,11 @@ public class HomeController {
         loader.setController(controller);
         Parent root = loader.load();
         // Create a new stage and set its scene
-        Stage stage = new Stage();
+        SecondaryStage stage = SecondaryStage.getInstance();
         stage.setTitle("Login");
+
+        stage.setX(primaryStage.getX() + 570);
+        stage.setY(primaryStage.getY() + 135);
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
 
         stage.getIcons().add(new Image("/images/ikonica.png"));

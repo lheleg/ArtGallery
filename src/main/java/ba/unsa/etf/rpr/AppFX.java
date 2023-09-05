@@ -22,7 +22,7 @@ public class AppFX extends Application {
 
         Scene scene = new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE);
         scene.setFill(Color.TRANSPARENT);
-        stage.setTitle("Art Gallery");
+        stage.setTitle("PicturePerfect");
         stage.setScene(scene);
 
         HomeController homeController = fxmlLoader.getController();
