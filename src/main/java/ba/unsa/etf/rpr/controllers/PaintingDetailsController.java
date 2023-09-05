@@ -60,6 +60,9 @@ public class PaintingDetailsController {
             availability = "not " + availability;
             webButton.setDisable(true);
         };
+
+        if(g.getMyGallery().contains(painting)) saveButton.setDisable(true);
+
         Text mess = new Text("Dear " + user.getFirstName() + ",\n" + painting.getTitle() + " by " + painting.getArtist().getFirstName() + " " + painting.getArtist().getLastName() + "\nis " + availability + " for sale!");
         Text greet = new Text("- team  pp");
 
