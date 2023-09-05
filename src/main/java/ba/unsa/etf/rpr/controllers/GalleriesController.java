@@ -194,15 +194,22 @@ public class GalleriesController {
             StackPane stackPane = new StackPane(rect, rect1, imageView);
             stackPane.setAlignment(Pos.CENTER);
 
-            VBox vbox = new VBox();
+            VBox vbox = new VBox(stackPane, paiTitle);;
+            VBox pom;
 
             if(forWhat != "gallery" && forWhat != "artist"){
                 ImageView remove = new ImageView("/images/cancel.png");
                 remove.setFitHeight(20);
                 remove.setFitWidth(20);
-                vbox = new VBox(stackPane, paiTitle, remove);
-            }else vbox = new VBox(stackPane, paiTitle);
 
+                remove.setOnMouseClicked(event -> {
+                    myGallery.remove(painting);
+                });
+                pom = new VBox(vbox, remove);
+            }else {
+                pom = new VBox(vbox);
+            }
+            pom.setAlignment(Pos.CENTER);
             vbox.setAlignment(Pos.CENTER);
 
             vbox.setOnMouseClicked(event -> {
@@ -213,7 +220,7 @@ public class GalleriesController {
                 }
             });
 
-            pane.add(vbox, column, row);
+            pane.add(pom, column, row);
             column++;
             if (column == 3) {
                 column = 0;
