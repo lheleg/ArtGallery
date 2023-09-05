@@ -77,7 +77,7 @@ public class GalleriesController {
         pane.setAlignment(Pos.CENTER);
        // System.out.println(Arrays.toString(galleries.toArray()));
         for (Gallery gal : galleries) {
-            ImageView imageView = new ImageView(new Image("/images/gallery"+gal.getId()+".jpg"));
+            ImageView imageView = new ImageView(new Image("/images/galleries/"+gal.getId()+".jpg"));
             imageView.setFitWidth(275);
             imageView.setFitHeight(160);
             Rectangle rect = new Rectangle(imageView.getFitWidth()+5, imageView.getFitHeight()+5,
@@ -124,9 +124,9 @@ public class GalleriesController {
         pane.setAlignment(Pos.CENTER);
 
         for (Artist artist : artists) {
-            ImageView imageView = new ImageView(new Image(artist.getImage()));
+            ImageView imageView = new ImageView(new Image("/images/artists/"+artist.getId()+".jpg"));
             imageView.setFitWidth(200);
-            imageView.setFitHeight(250);
+            imageView.setFitHeight(200);
             Rectangle rect = new Rectangle(imageView.getFitWidth()+5, imageView.getFitHeight()+5,
                     new LinearGradient(0, 1.4, 0, 0, true, javafx.scene.paint.CycleMethod.NO_CYCLE,
                             new Stop(0, Color.BLACK), new Stop(1, Color.TRANSPARENT)));
