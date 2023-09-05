@@ -24,7 +24,7 @@
    <children>
       <ButtonBar buttonMinWidth="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="500.0" GridPane.rowIndex="2">
         <buttons>
-          <Button fx:id="webButton" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: #e0e0e0; -fx-border-color: #b6977d; -fx-border-radius: 3; -fx-background-radius: 3;" text="b u y">
+          <Button fx:id="webButton" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: #e0e0e0; -fx-border-color: #b6977d; -fx-border-radius: 3; -fx-background-radius: 3;" text="c o n t a c t">
                <font>
                   <Font name="Marlett" size="12.0" />
                </font>

@@ -63,7 +63,7 @@ public class PaintingDetailsController {
 
         if(g.getMyGallery().contains(painting)) saveButton.setDisable(true);
 
-        Text mess = new Text("Dear " + user.getFirstName() + ",\n" + painting.getTitle() + " by " + painting.getArtist().getFirstName() + " " + painting.getArtist().getLastName() + "\nis " + availability + " for sale!");
+        Text mess = new Text("Dear " + user.getFirstName() + ",\n" + painting.getTitle() + " by " + painting.getArtist().getFirstName() + " " + painting.getArtist().getLastName() + "\nis " + availability + " for sale!\nContact the gallery to find out more.");
         Text greet = new Text("- team  pp");
 
         mess.setFont(Font.font(null, FontWeight.MEDIUM, 18));
