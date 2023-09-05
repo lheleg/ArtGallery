@@ -211,7 +211,7 @@ public class GalleriesController {
 
             fxmlLoader.setController(controller);
             Parent root = fxmlLoader.load();
-            DetailStage detailsStage = DetailStage.getInstance();
+            SecondaryStage detailsStage = SecondaryStage.getInstance();
             Scene scene = new Scene(root);
             scene.setFill(Color.TRANSPARENT);
             detailsStage.setScene(scene);

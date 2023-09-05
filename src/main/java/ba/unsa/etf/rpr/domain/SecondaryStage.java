@@ -4,17 +4,17 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class DetailStage extends Stage {
-    private static DetailStage instance;
+public class SecondaryStage extends Stage {
+    private static SecondaryStage instance;
 
-    private DetailStage() {
+    private SecondaryStage() {
         this.initStyle(StageStyle.TRANSPARENT);
         this.getIcons().add(new Image("images/ikonica.png"));
     }
 
-    public static DetailStage getInstance() {
+    public static SecondaryStage getInstance() {
         if (instance == null) {
-            instance = new DetailStage();
+            instance = new SecondaryStage();
         }
         return instance;
     }
