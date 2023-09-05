@@ -5,6 +5,7 @@ import ba.unsa.etf.rpr.business.GalleryManager;
 import ba.unsa.etf.rpr.business.PaintingManager;
 import ba.unsa.etf.rpr.domain.*;
 import ba.unsa.etf.rpr.exceptions.GalleryException;
+import ba.unsa.etf.rpr.util.SecondaryStage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;

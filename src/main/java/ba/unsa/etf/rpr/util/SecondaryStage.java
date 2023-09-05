@@ -1,4 +1,4 @@
-package ba.unsa.etf.rpr.domain;
+package ba.unsa.etf.rpr.util;
 
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
