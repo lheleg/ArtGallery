@@ -15,7 +15,8 @@ public class SecondaryStage extends Stage {
     public static SecondaryStage getInstance() {
         if (instance == null) {
             instance = new SecondaryStage();
-        }
+        }else instance.close();
+        instance.centerOnScreen();
         return instance;
     }
 }

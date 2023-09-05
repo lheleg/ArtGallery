@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -42,15 +43,19 @@ public class HomeController {
 
         // Load the FXML file for new stage
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/register.fxml"));
-        Parent root = loader.load();
 
+        RegisterController controller = new RegisterController();
+      //  controller.setPrimaryStage(this.primaryStage);
+
+        loader.setController(controller);
+        Parent root = loader.load();
         // Create a new stage and set its scene
-        Stage stage = new Stage();
+        SecondaryStage stage = SecondaryStage.getInstance();
         stage.setTitle("Register");
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
 
-        stage.getIcons().add(new Image("/images/ikonica.png"));
-        stage.initStyle(StageStyle.TRANSPARENT); // hides upper window bar
+        stage.setX(primaryStage.getX() + 150);
+        stage.setY(primaryStage.getY() + 100);
         stage.setResizable(false);
         // Show the new stage
         stage.show();
@@ -75,8 +80,6 @@ public class HomeController {
         stage.setY(primaryStage.getY() + 135);
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
 
-        stage.getIcons().add(new Image("/images/ikonica.png"));
-        stage.initStyle(StageStyle.TRANSPARENT); // hides upper window bar
         stage.setResizable(false);
         // Show the new stage
         stage.show();
