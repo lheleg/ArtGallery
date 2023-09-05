@@ -30,23 +30,33 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * The type PicturePerfect page controller
  */
 public class GalleriesController {
-    public ScrollPane scroller;
-    public GridPane pane = new GridPane();
-    public Button galleriesButton;
-    public Button artistsButton;
+    @FXML
+    private ScrollPane scroller;
+
+    @FXML
+    private GridPane pane = new GridPane();
+
+    @FXML
+    private Button galleriesButton;
+    @FXML
+    private Button artistsButton;
+
+    @FXML
+    private Button myGalleryButton;
 
     private User user;
     private Stage primaryStage;
 
     private final GalleryManager g = new GalleryManager();
 
-    private List<Painting> myGallery;
+    private List<Painting> myGallery = new ArrayList<>();
 
     private final ArtistManager a = new ArtistManager();
 
@@ -150,7 +160,7 @@ public class GalleriesController {
         scroller.setContent(pane);
     }
 
-    public void ShowPaintings(int id, String forWhat) throws GalleryException {
+    public void ShowPaintings(Integer id, String forWhat) throws GalleryException {
         int row = 0;
         int column = 0;
         pane.setHgap(100);
@@ -162,9 +172,9 @@ public class GalleriesController {
 
         if (forWhat == "gallery"){
             paintings = p.getByGallery(g.getById(id));
-        }else {
+        }else if (forWhat == "artists") {
             paintings = p.getByArtist(a.getById(id));
-        }
+        }else paintings = myGallery;
 
         for (Painting painting : paintings) {
             ImageView imageView = new ImageView(new Image(painting.getImage()));
@@ -226,6 +236,7 @@ public class GalleriesController {
         }
     }
 
+
     @FXML
     public void initialize() throws GalleryException {
         GalleryDivs();
@@ -246,6 +257,16 @@ public class GalleriesController {
             pane.getChildren().clear();
             try {
                 ArtistDivs();
+            } catch (GalleryException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        myGalleryButton.setOnAction(event -> {
+            // Clear existing content in pane
+            pane.getChildren().clear();
+            try {
+                ShowPaintings(null,"private gallery");
             } catch (GalleryException e) {
                 throw new RuntimeException(e);
             }
