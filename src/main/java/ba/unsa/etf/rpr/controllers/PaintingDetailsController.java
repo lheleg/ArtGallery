@@ -56,14 +56,16 @@ public class PaintingDetailsController {
     @FXML
     public void initialize() throws GalleryException {
         String availability = "available";
+        String contact = "Contact " + painting.getGallery().getName() + "\nand find out more.";
         if (!painting.getAvailable()) {
             availability = "not " + availability;
+            contact = "";
             webButton.setDisable(true);
         };
 
         if(g.getMyGallery().contains(painting)) saveButton.setDisable(true);
 
-        Text mess = new Text("Dear " + user.getFirstName() + ",\n" + painting.getTitle() + " by " + painting.getArtist().getFirstName() + " " + painting.getArtist().getLastName() + "\nis " + availability + " for sale!\nContact the gallery to find out more.");
+        Text mess = new Text("Dear " + user.getFirstName() + ",\n" + painting.getTitle() + " by " + painting.getArtist().getFirstName() + " " + painting.getArtist().getLastName() + "\nis " + availability + " for sale!\n" + contact);
         Text greet = new Text("- team  pp");
 
         mess.setFont(Font.font(null, FontWeight.MEDIUM, 18));
