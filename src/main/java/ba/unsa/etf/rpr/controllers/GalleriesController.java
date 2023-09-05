@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -199,12 +200,14 @@ public class GalleriesController {
 
             if(forWhat != "gallery" && forWhat != "artist"){
                 ImageView remove = new ImageView("/images/cancel.png");
-                remove.setFitHeight(20);
-                remove.setFitWidth(20);
+                remove.setFitHeight(25);
+                remove.setFitWidth(25);
+                remove.setCursor(Cursor.cursor("hand"));
 
                 remove.setOnMouseClicked(event -> {
                     myGallery.remove(painting);
                     try {
+                        pane.getChildren().clear();
                         ShowPaintings(null, "private gallery");
                     } catch (GalleryException e) {
                         throw new RuntimeException(e);
