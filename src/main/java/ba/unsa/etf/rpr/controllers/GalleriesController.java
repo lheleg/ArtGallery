@@ -28,6 +28,8 @@ import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -111,6 +113,7 @@ public class GalleriesController {
                 row++;
             }
         }
+        scroller.setPadding(new Insets(0));
         scroller.setContent(pane);
     }
 
@@ -160,6 +163,7 @@ public class GalleriesController {
                 row++;
             }
         }
+        scroller.setPadding(new Insets(0));
         scroller.setContent(pane);
     }
 
@@ -202,8 +206,8 @@ public class GalleriesController {
 
             if(forWhat != "gallery" && forWhat != "artist"){
                 ImageView remove = new ImageView("/images/cancel.png");
-                remove.setFitHeight(25);
-                remove.setFitWidth(25);
+                remove.setFitHeight(30);
+                remove.setFitWidth(30);
                 remove.setCursor(Cursor.HAND);;
 
                 remove.setOnMouseClicked(event -> {
@@ -237,7 +241,18 @@ public class GalleriesController {
                 row++;
             }
         }
-        scroller.setContent(pane);
+        if(myGallery.isEmpty() && paintings.isEmpty()) {
+            Text mess = new Text("O o p s ... your Gallery is empty!\nBe free to explore our artists and galleries to create your own collection!");
+            mess.setFont(Font.font(null, FontWeight.MEDIUM, 20));
+            mess.setTextAlignment(TextAlignment.CENTER);
+            VBox vbox = new VBox(mess);
+            vbox.setAlignment(Pos.CENTER);
+            scroller.setPadding(new Insets(120));
+            scroller.setContent(vbox);
+        }else {
+            scroller.setPadding(new Insets(0));
+            scroller.setContent(pane);
+        }
     }
 
     public void ShowPaintingDetails(Painting painting) throws GalleryException{
