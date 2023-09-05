@@ -32,6 +32,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -76,7 +77,7 @@ public class GalleriesController {
         pane.setAlignment(Pos.CENTER);
        // System.out.println(Arrays.toString(galleries.toArray()));
         for (Gallery gal : galleries) {
-            ImageView imageView = new ImageView(new Image(gal.getImage()));
+            ImageView imageView = new ImageView(new Image("/images/gallery"+gal.getId()+".jpg"));
             imageView.setFitWidth(275);
             imageView.setFitHeight(160);
             Rectangle rect = new Rectangle(imageView.getFitWidth()+5, imageView.getFitHeight()+5,
