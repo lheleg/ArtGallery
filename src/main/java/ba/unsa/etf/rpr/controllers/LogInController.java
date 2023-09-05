@@ -5,7 +5,6 @@ import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.GalleryException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,7 +13,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -125,11 +123,11 @@ public class LogInController {
                         }
                     } else {
                         // Display an error message
-                        errorLabel.setText("Invalid password.");
+                        errorLabel.setText("Invalid username or password.");
                     }
                 }else {
                     // Display an error message
-                    errorLabel.setText("Invalid username.");
+                    errorLabel.setText("Invalid username or password.");
                 }
             }
         });
