@@ -58,6 +58,7 @@ public class GalleriesController {
     private User user;
     private Stage primaryStage;
 
+
     private final GalleryManager g = new GalleryManager();
 
     private List<Painting> myGallery = new ArrayList<>();
@@ -65,6 +66,8 @@ public class GalleriesController {
     private final ArtistManager a = new ArtistManager();
 
     private final PaintingManager p = new PaintingManager();
+
+    private SecondaryStage secondaryStage;
 
     public GalleriesController() throws GalleryException {
     }
@@ -268,6 +271,8 @@ public class GalleriesController {
             fxmlLoader.setController(controller);
             Parent root = fxmlLoader.load();
             SecondaryStage detailsStage = SecondaryStage.getInstance();
+            secondaryStage = detailsStage;
+
             Scene scene = new Scene(root);
             scene.setFill(Color.TRANSPARENT);
             detailsStage.setScene(scene);
@@ -317,7 +322,8 @@ public class GalleriesController {
 
     @FXML
     private void closeAction(MouseEvent event) {
-        ((Node)(event.getSource())).getScene().getWindow().hide();
+        secondaryStage.close();
+        primaryStage.close();
     }
 
     public void setUser(User user) {

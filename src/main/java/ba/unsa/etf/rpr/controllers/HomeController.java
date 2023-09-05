@@ -3,16 +3,12 @@ package ba.unsa.etf.rpr.controllers;
 import ba.unsa.etf.rpr.util.SecondaryStage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -38,6 +34,8 @@ public class HomeController {
 
     private Stage primaryStage;
 
+    private SecondaryStage secondaryStage;
+
     @FXML
     private void showRegister(MouseEvent event) throws IOException {
 
@@ -51,6 +49,7 @@ public class HomeController {
         Parent root = loader.load();
         // Create a new stage and set its scene
         SecondaryStage stage = SecondaryStage.getInstance();
+        secondaryStage = stage;
         stage.setTitle("Register");
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
 
@@ -74,6 +73,7 @@ public class HomeController {
         Parent root = loader.load();
         // Create a new stage and set its scene
         SecondaryStage stage = SecondaryStage.getInstance();
+        secondaryStage = stage;
         stage.setTitle("Login");
 
         stage.setX(primaryStage.getX() + 570);
@@ -87,13 +87,13 @@ public class HomeController {
 
     @FXML
     private void closeAction(MouseEvent event) {
-        ((Node)(event.getSource())).getScene().getWindow().hide();
+        secondaryStage.close();
+        primaryStage.close();
     }
     @FXML
     void initialize() {
 
     }
-
 
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
