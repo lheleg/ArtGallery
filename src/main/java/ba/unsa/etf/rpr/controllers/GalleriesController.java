@@ -103,6 +103,7 @@ public class GalleriesController {
                     throw new RuntimeException(e);
                 }
             });
+            stackPane.setCursor(Cursor.HAND);
             pane.add(stackPane, column, row);
             column++;
             if (column == 3) {
@@ -151,6 +152,7 @@ public class GalleriesController {
                 }
             });
 
+            stackPane.setCursor(Cursor.HAND);
             pane.add(stackPane, column, row);
             column++;
             if (column == 3) {
@@ -202,7 +204,7 @@ public class GalleriesController {
                 ImageView remove = new ImageView("/images/cancel.png");
                 remove.setFitHeight(25);
                 remove.setFitWidth(25);
-                remove.setCursor(Cursor.cursor("hand"));
+                remove.setCursor(Cursor.HAND);;
 
                 remove.setOnMouseClicked(event -> {
                     myGallery.remove(painting);
@@ -227,7 +229,7 @@ public class GalleriesController {
                     throw new RuntimeException(e);
                 }
             });
-
+            pom.setCursor(Cursor.HAND);
             pane.add(pom, column, row);
             column++;
             if (column == 3) {
