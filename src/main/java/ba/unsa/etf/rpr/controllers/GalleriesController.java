@@ -204,6 +204,11 @@ public class GalleriesController {
 
                 remove.setOnMouseClicked(event -> {
                     myGallery.remove(painting);
+                    try {
+                        ShowPaintings(null, "private gallery");
+                    } catch (GalleryException e) {
+                        throw new RuntimeException(e);
+                    }
                 });
                 pom = new VBox(vbox, remove);
             }else {
