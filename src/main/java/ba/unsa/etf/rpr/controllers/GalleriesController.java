@@ -43,7 +43,7 @@ public class GalleriesController {
 
     private final GalleryManager g = new GalleryManager();
 
-    private Gallery myGallery;
+    private List<Painting> myGallery;
 
     private final ArtistManager a = new ArtistManager();
 
@@ -225,8 +225,8 @@ public class GalleriesController {
     @FXML
     public void initialize() throws GalleryException {
         GalleryDivs();
-        myGallery = g.getGalleryByUserId(user.getId());
-        if(g.getGalleryByUserId(user.getId()) == null) myGallery = new Gallery(user.getFirstName()+"'s gallery", null,user,null);
+     //   myGallery = g.getGalleryByUserId(user.getId());
+       // if(g.getGalleryByUserId(user.getId()) == null) myGallery = new Gallery(user.getFirstName()+"'s gallery", null,user,null);
 
         galleriesButton.setOnAction(event -> {
             // Clear existing content in pane
