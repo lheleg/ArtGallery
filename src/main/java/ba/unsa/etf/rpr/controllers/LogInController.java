@@ -110,6 +110,7 @@ public class LogInController {
                             stage.initStyle(StageStyle.TRANSPARENT);
                             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
 
+                            controller.setPrimaryStage(stage);
                             stage.getIcons().add(new Image("/images/ikonica.png"));
                             stage.initStyle(StageStyle.TRANSPARENT); // hides upper window bar
                             stage.setResizable(false);

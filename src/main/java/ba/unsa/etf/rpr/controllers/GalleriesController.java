@@ -27,6 +27,8 @@ import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -40,6 +42,7 @@ public class GalleriesController {
     public Button artistsButton;
 
     private User user;
+    private Stage primaryStage;
 
     private final GalleryManager g = new GalleryManager();
 
@@ -208,6 +211,7 @@ public class GalleriesController {
             PaintingDetailsController controller = new PaintingDetailsController();
             controller.setPainting(painting);
             controller.setUser(this.user);
+            controller.setG(this);
 
             fxmlLoader.setController(controller);
             Parent root = fxmlLoader.load();
@@ -227,7 +231,6 @@ public class GalleriesController {
         GalleryDivs();
      //   myGallery = g.getGalleryByUserId(user.getId());
        // if(g.getGalleryByUserId(user.getId()) == null) myGallery = new Gallery(user.getFirstName()+"'s gallery", null,user,null);
-
         galleriesButton.setOnAction(event -> {
             // Clear existing content in pane
             pane.getChildren().clear();
@@ -256,5 +259,12 @@ public class GalleriesController {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
+    public List<Painting> getMyGallery() {
+        return myGallery;
     }
 }

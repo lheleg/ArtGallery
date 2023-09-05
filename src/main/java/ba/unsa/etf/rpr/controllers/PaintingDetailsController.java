@@ -30,8 +30,9 @@ public class PaintingDetailsController {
     @FXML
     public ImageView cancelImageView;
     private Painting painting;
-
     private User user;
+
+    private GalleriesController g;
 
     /**
      * Gets painting
@@ -89,11 +90,19 @@ public class PaintingDetailsController {
         });
 
         saveButton.setOnAction(actionEvent -> {
-
+            getG().getMyGallery().add(painting);
         });
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public void setG(GalleriesController g) {
+        this.g = g;
+    }
+
+    public GalleriesController getG() {
+        return g;
     }
 }
