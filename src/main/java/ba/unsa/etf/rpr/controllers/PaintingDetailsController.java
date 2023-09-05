@@ -94,6 +94,7 @@ public class PaintingDetailsController {
 
         saveButton.setOnAction(actionEvent -> {
             getG().getMyGallery().add(painting);
+            saveButton.setDisable(true);
         });
     }
 

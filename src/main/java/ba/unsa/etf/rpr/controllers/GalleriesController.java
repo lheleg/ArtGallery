@@ -172,7 +172,7 @@ public class GalleriesController {
 
         if (forWhat == "gallery"){
             paintings = p.getByGallery(g.getById(id));
-        }else if (forWhat == "artists") {
+        }else if (forWhat == "artist") {
             paintings = p.getByArtist(a.getById(id));
         }else paintings = myGallery;
 
@@ -194,7 +194,15 @@ public class GalleriesController {
             StackPane stackPane = new StackPane(rect, rect1, imageView);
             stackPane.setAlignment(Pos.CENTER);
 
-            VBox vbox = new VBox(stackPane, paiTitle);
+            VBox vbox = new VBox();
+
+            if(forWhat != "gallery" && forWhat != "artist"){
+                ImageView remove = new ImageView("/images/cancel.png");
+                remove.setFitHeight(20);
+                remove.setFitWidth(20);
+                vbox = new VBox(stackPane, paiTitle, remove);
+            }else vbox = new VBox(stackPane, paiTitle);
+
             vbox.setAlignment(Pos.CENTER);
 
             vbox.setOnMouseClicked(event -> {
@@ -204,6 +212,7 @@ public class GalleriesController {
                     throw new RuntimeException(e);
                 }
             });
+
             pane.add(vbox, column, row);
             column++;
             if (column == 3) {
