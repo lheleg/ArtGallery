@@ -29,8 +29,6 @@ public class HomeController {
     @FXML
     private ImageView infoImageView;
 
-    @FXML
-    private ImageView menuImageView;
 
     private Stage primaryStage;
 
@@ -89,6 +87,23 @@ public class HomeController {
     private void closeAction(MouseEvent event) {
         secondaryStage.close();
         primaryStage.close();
+    }
+
+    @FXML
+    private void showInfo(MouseEvent event) throws IOException {
+        // Load the FXML file for new stage
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/info.fxml"));
+        Parent root = loader.load();
+        // Create a new stage and set its scene
+        SecondaryStage stage = SecondaryStage.getInstance();
+        secondaryStage = stage;
+        stage.setTitle("Info");
+
+        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+
+        stage.setResizable(false);
+        // Show the new stage
+        stage.show();
     }
     @FXML
     void initialize() {
