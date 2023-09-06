@@ -36,6 +36,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
+
 /**
  * The type PicturePerfect page controller
  */
@@ -284,6 +286,22 @@ public class GalleriesController {
         }
     }
 
+    @FXML
+    private void showInfo(MouseEvent event) throws IOException {
+        // Load the FXML file for new stage
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/info.fxml"));
+        Parent root = loader.load();
+        // Create a new stage and set its scene
+        SecondaryStage stage = SecondaryStage.getInstance();
+        secondaryStage = stage;
+        stage.setTitle("Info");
+
+        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+
+        stage.setResizable(false);
+        // Show the new stage
+        stage.show();
+    }
 
     @FXML
     public void initialize() throws GalleryException {
