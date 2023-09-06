@@ -14,6 +14,9 @@ PicturePerfect is the perfect platform for exploring galleries, artists, and art
 
 
 ## Built With
-> Intellij IDEA 
+
+> Intellij IDEA
+
 > Scene Builder
+
 > MySQL Workbench
