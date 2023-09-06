@@ -210,8 +210,8 @@ public class GalleriesController {
 
             if(forWhat != "gallery" && forWhat != "artist"){
                 ImageView remove = new ImageView("/images/cancel.png");
-                remove.setFitHeight(30);
-                remove.setFitWidth(30);
+                remove.setFitHeight(25);
+                remove.setFitWidth(25);
                 remove.setCursor(Cursor.HAND);;
 
                 remove.setOnMouseClicked(event -> {
@@ -223,21 +223,23 @@ public class GalleriesController {
                         throw new RuntimeException(e);
                     }
                 });
+
                 pom = new VBox(vbox, remove);
+                pom.setSpacing(5);
             }else {
                 pom = new VBox(vbox);
             }
             pom.setAlignment(Pos.CENTER);
             vbox.setAlignment(Pos.CENTER);
 
-            vbox.setOnMouseClicked(event -> {
+            imageView.setOnMouseClicked(event -> {
                 try {
                     ShowPaintingDetails(painting);
                 } catch (GalleryException e) {
                     throw new RuntimeException(e);
                 }
             });
-            pom.setCursor(Cursor.HAND);
+            imageView.setCursor(Cursor.HAND);
             pane.add(pom, column, row);
             column++;
             if (column == 3) {
