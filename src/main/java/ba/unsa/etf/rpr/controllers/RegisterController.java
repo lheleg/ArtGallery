@@ -77,7 +77,6 @@ public class RegisterController {
     public ImageView cancelImageView;
 
     private Stage primaryStage;
-
     public void initialize() {
     }
 }

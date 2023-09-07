@@ -112,5 +112,60 @@
                 <Insets left="5.0" />
             </GridPane.margin>
         </ImageView>
+      <Label fx:id="wrongFirstNameLabel" style="-fx-text-fill: #ff0000;" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets bottom="50.0" left="120.0" top="20.0" />
+         </GridPane.margin>
+         <font>
+            <Font name="Marlett" size="10.0" />
+         </font>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </Label>
+      <Label fx:id="wrongLastNameLabel" layoutX="130.0" layoutY="58.0" style="-fx-text-fill: #ff0000;" GridPane.rowIndex="2">
+         <font>
+            <Font name="Marlett" size="10.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="50.0" left="120.0" />
+         </GridPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </Label>
+      <Label fx:id="wrongUsernameLabel" layoutX="130.0" layoutY="125.0" style="-fx-text-fill: #ff0000;" GridPane.rowIndex="3">
+         <font>
+            <Font name="Marlett" size="10.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="50.0" left="120.0" />
+         </GridPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </Label>
+      <Label fx:id="wrongPasswordLabel" layoutX="130.0" layoutY="192.0" style="-fx-text-fill: #ff0000;" GridPane.rowIndex="4">
+         <font>
+            <Font name="Marlett" size="10.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="50.0" left="120.0" />
+         </GridPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </Label>
+      <Label fx:id="errorLabel" layoutX="130.0" layoutY="259.0" style="-fx-text-fill: #ff0000;" GridPane.rowIndex="5">
+         <font>
+            <Font name="Marlett" size="10.0" />
+         </font>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </Label>
     </children>
 </GridPane>
