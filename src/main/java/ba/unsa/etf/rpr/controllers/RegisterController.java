@@ -78,5 +78,13 @@ public class RegisterController {
 
     private Stage primaryStage;
     public void initialize() {
+        firstNameField.textProperty().addListener((observable, oldValue, newValue) -> clearErrorMessage(wrongFirstNameLabel));
+        lastNameField.textProperty().addListener((observable, oldValue, newValue) -> clearErrorMessage(wrongLastNameLabel));
+        passwordField.textProperty().addListener((observable, oldValue, newValue) -> clearErrorMessage(wrongPasswordLabel));
+        usernameField.textProperty().addListener((observable, oldValue, newValue) -> clearErrorMessage(wrongUsernameLabel));
+    }
+
+    private void clearErrorMessage(Label label) {
+        label.setText("");
     }
 }
