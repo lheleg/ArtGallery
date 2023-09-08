@@ -1,2 +1,2 @@
-Main-Class: ba.unsa.etf.rpr.AppFX
+Main-Class: ba.unsa.etf.rpr.App
 

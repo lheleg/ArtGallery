@@ -1,6 +1,5 @@
 package ba.unsa.etf.rpr.controllers;
 
-import ba.unsa.etf.rpr.AppFX;
 import ba.unsa.etf.rpr.business.ArtistManager;
 import ba.unsa.etf.rpr.business.GalleryManager;
 import ba.unsa.etf.rpr.business.PaintingManager;
@@ -41,7 +40,7 @@ import java.util.List;
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 /**
- * The type PicturePerfect page controller
+ * The type PicturePerfect page controller.
  */
 public class GalleriesController {
     @FXML
@@ -75,6 +74,12 @@ public class GalleriesController {
     public GalleriesController() throws GalleryException {
     }
 
+    /**
+     * Initialize the GalleryDivs method.
+     * Fetch galleries and display them in a grid.
+     *
+     * @throws GalleryException If there is an issue fetching galleries.
+     */
     public void GalleryDivs() throws GalleryException {
         List<Gallery> galleries = g.fetchGalleries();
         int row = 0;
@@ -124,6 +129,12 @@ public class GalleriesController {
         scroller.setContent(pane);
     }
 
+    /**
+     * Initialize the ArtistDivs method.
+     * Fetch artists and display them in a grid.
+     *
+     * @throws GalleryException If there is an issue fetching artists.
+     */
     public void ArtistDivs() throws GalleryException {
         List<Artist> artists = a.fetchArtists();
         int row = 0;
@@ -174,6 +185,14 @@ public class GalleriesController {
         scroller.setContent(pane);
     }
 
+    /**
+     * Initialize the ShowPaintings method.
+     * Show paintings based on the selected gallery or artist.
+     *
+     * @param id      The ID of the gallery or artist.
+     * @param forWhat Indicates whether the paintings are for a gallery, artist, or private gallery.
+     * @throws GalleryException If there is an issue fetching paintings.
+     */
     public void ShowPaintings(Integer id, String forWhat) throws GalleryException {
         int row = 0;
         int column = 0;
@@ -264,6 +283,13 @@ public class GalleriesController {
         }
     }
 
+    /**
+     * Initialize the ShowPaintingDetails method.
+     * Show details of a selected painting.
+     *
+     * @param painting The painting to display details for.
+     * @throws GalleryException If there is an issue displaying painting details.
+     */
     public void ShowPaintingDetails(Painting painting) throws GalleryException{
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/paintingDetails.fxml"));
@@ -288,6 +314,13 @@ public class GalleriesController {
         }
     }
 
+    /**
+     * Handle the showInfo event.
+     * Load and display additional information.
+     *
+     * @param event The mouse event triggering the action.
+     * @throws IOException If there is an issue loading information.
+     */
     @FXML
     private void showInfo(MouseEvent event) throws IOException {
         // Load the FXML file for new stage
@@ -305,6 +338,12 @@ public class GalleriesController {
         stage.show();
     }
 
+    /**
+     * Initialize the controller.
+     * Set initial content and event handlers.
+     *
+     * @throws GalleryException If there is an issue initializing the controller.
+     */
     @FXML
     public void initialize() throws GalleryException {
         GalleryDivs();
@@ -341,12 +380,25 @@ public class GalleriesController {
         });
     }
 
+    /**
+     * Handle the closeAction event.
+     * Close the secondary stage and primary stage.
+     *
+     * @param event The mouse event triggering the action.
+     */
     @FXML
     private void closeAction(MouseEvent event) {
         if(secondaryStage != null) secondaryStage.close();
         primaryStage.close();
     }
 
+    /**
+     * Handle the logOut event.
+     * Log out and return to the home page.
+     *
+     * @param event The mouse event triggering the action.
+     * @throws IOException If there is an issue logging out.
+     */
     @FXML
     private void logOut(MouseEvent event) throws IOException {
         if(secondaryStage != null) secondaryStage.close();
@@ -359,6 +411,8 @@ public class GalleriesController {
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
 
+        stage.setTitle("Details");
+
         controller.setPrimaryStage(stage);
         stage.getIcons().add(new Image("/images/ikonica.png"));
         stage.initStyle(StageStyle.TRANSPARENT); // hides upper window bar
@@ -367,13 +421,29 @@ public class GalleriesController {
         primaryStage.close();
     }
 
+    /**
+     * Set the current user.
+     *
+     * @param user The user to set.
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
+    /**
+     * Set the primary stage.
+     *
+     * @param primaryStage The primary stage to set.
+     */
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
+
+    /**
+     * Get the user's private gallery.
+     *
+     * @return The user's private gallery as a list of paintings.
+     */
     public List<Painting> getMyGallery() {
         return myGallery;
     }

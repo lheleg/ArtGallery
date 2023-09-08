@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import java.awt.*;
 
 /**
- * The type Painting detail controller
+ * The type Painting detail controller.
  */
 public class PaintingDetailsController {
     @FXML
@@ -35,7 +35,7 @@ public class PaintingDetailsController {
     private GalleriesController g;
 
     /**
-     * Gets painting
+     * Gets painting.
      *
      * @return the painting
      */
@@ -44,7 +44,7 @@ public class PaintingDetailsController {
     }
 
     /**
-     * Sets painting
+     * Sets painting.
      *
      * @param painting the painting
      */
@@ -52,7 +52,12 @@ public class PaintingDetailsController {
         this.painting = painting;
     }
 
-
+    /**
+     * Initialize the controller.
+     * Set initial content and event handlers.
+     *
+     * @throws GalleryException If there is an issue initializing the controller.
+     */
     @FXML
     public void initialize() throws GalleryException {
         String availability = "available";

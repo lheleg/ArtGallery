@@ -68,6 +68,11 @@ public class LogInController {
 
     private Stage primaryStage;
 
+    /**
+     * Initialize the LoginController.
+     *
+     * @throws GalleryException If there is an issue initializing the controller.
+     */
     public void initialize() throws GalleryException  {
         loginButton.setOnAction(actionEvent -> {
             String username = usernameField.getText().trim();
@@ -131,6 +136,11 @@ public class LogInController {
         });
     }
 
+    /**
+     * Set the primary stage.
+     *
+     * @param primaryStage The primary stage to set.
+     */
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }

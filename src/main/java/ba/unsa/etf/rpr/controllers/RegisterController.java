@@ -14,6 +14,9 @@ import javafx.stage.Stage;
 
 import java.sql.Connection;
 
+/**
+ * The controller class for the Registration page.
+ */
 public class RegisterController {
 
     /**
@@ -82,6 +85,9 @@ public class RegisterController {
 
     private UserManager u = new UserManager();
 
+    /**
+     * Initialize the RegistrationController.
+     */
     public void initialize() {
         registerButton.setOnAction(actionEvent -> {
             String username = usernameField.getText().trim();
@@ -134,7 +140,6 @@ public class RegisterController {
                         errorLabel.setTextFill(Color.RED);
                         errorLabel.setText("Error registering user. Please try again.");
                     }
-                    connection.close();
 
                 } catch (Exception exc) {
                     exc.printStackTrace();
@@ -153,6 +158,11 @@ public class RegisterController {
         });
     }
 
+    /**
+     * Clear error message label.
+     *
+     * @param label The label to clear.
+     */
     private void clearErrorMessage(Label label) {
         label.setText("");
     }
