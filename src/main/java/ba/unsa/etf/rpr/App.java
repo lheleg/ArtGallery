@@ -4,13 +4,14 @@ import ba.unsa.etf.rpr.domain.Artist;
 import ba.unsa.etf.rpr.domain.Gallery;
 import ba.unsa.etf.rpr.domain.Painting;
 
-import org.apache.commons.cli.Option;
+import org.apache.commons.cli.*;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.List;
 
 /**
- * Hello world!
- *
+ * The type App.
  */
 public class App 
 {
@@ -40,6 +41,57 @@ public class App
     private static final Option paintingGalleryId  = new Option("", "painting-gallery", false, "");
     private static final Option paintingImage  = new Option("", "painting-image", false, "");
 
+
+    /**
+     * Print options.
+     *
+     * @param options the options
+     */
+    public static String formatOptions(Options options) {
+        HelpFormatter helpFormatter = new HelpFormatter();
+        StringWriter stringWriter = new StringWriter();
+        PrintWriter printWriter = new PrintWriter(stringWriter);
+        String header = "java -jar hotel-booking.jar [option] 'something else if needed'";
+        helpFormatter.printUsage(printWriter, 200, header);
+        helpFormatter.printOptions(printWriter, 200, options, 2, 7);
+        printWriter.close();
+        return stringWriter.toString();
+    }
+
+
+    /**
+     * Add options.
+     *
+     * @return the options
+     */
+    public static Options addOptions() {
+        Options options = new Options();
+        options.addOption(addGallery);
+        options.addOption(addArtist);
+        options.addOption(addPainting);
+        options.addOption(deleteGallery);
+        options.addOption(deleteArtist);
+        options.addOption(deletePainting);
+        options.addOption(updateGallery);
+        options.addOption(updateArtist);
+        options.addOption(deletePainting);
+        options.addOption(updatePainting);
+        options.addOption(getArtists);
+        options.addOption(getPaintings);
+        options.addOption(galleryName);
+        options.addOption(galleryImage);
+        options.addOption(galleryUrl);
+        options.addOption(artistFirstName);
+        options.addOption(artistLastName);
+        options.addOption(artistStyle);
+        options.addOption(artistImage);
+        options.addOption(paintingAvailable);
+        options.addOption(paintingTitle);
+        options.addOption(paintingArtistId);
+        options.addOption(paintingGalleryId);
+        options.addOption(paintingImage);
+        return options;
+    }
     public static void main( String[] args ) {
 
     }
