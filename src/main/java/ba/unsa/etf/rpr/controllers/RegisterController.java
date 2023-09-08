@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.UserManager;
+import ba.unsa.etf.rpr.dao.AbstractDao;
 import ba.unsa.etf.rpr.domain.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,12 +9,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.io.FileReader;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.util.Properties;
 
 public class RegisterController {
 
@@ -81,6 +80,8 @@ public class RegisterController {
     @FXML
     public ImageView cancelImageView;
 
+    private UserManager u = new UserManager();
+
     public void initialize() {
         registerButton.setOnAction(actionEvent -> {
             String username = usernameField.getText().trim();
@@ -92,6 +93,11 @@ public class RegisterController {
 
             if (username.isEmpty()) {
                 wrongUsernameLabel.setText("This field cannot be empty.");
+                textFieldsFilled = false;
+            }
+
+            if (u.findUserByUsername(username) != null) {
+                wrongUsernameLabel.setText("This username is already in use.");
                 textFieldsFilled = false;
             }
 
@@ -119,22 +125,15 @@ public class RegisterController {
                 user.setPassword(password);
 
                 try {
-                    FileReader reader = new FileReader("src/main/resources/db.properties");
-                    Properties p = new Properties();
-                    p.load(reader);
-                    String s1 = p.getProperty("user"), s2 = p.getProperty("password"), s3 = p.getProperty("url");
-                    Connection connection = DriverManager.getConnection(s3, s1, s2);
-
-                    UserManager u = new UserManager();
-                    User newUser = u.add(user);
-
+                    Connection connection = AbstractDao.getConnection();
                     // Check if the user object was returned by the add User method from UserDaoSQLImpl.java
-                    if (newUser != null) {
+                    if (u.add(user) != null) {
+                        errorLabel.setTextFill(Color.GREEN);
                         errorLabel.setText("User registered successfully. Log in to proceed.");
                     } else {
+                        errorLabel.setTextFill(Color.RED);
                         errorLabel.setText("Error registering user. Please try again.");
                     }
-
                     connection.close();
 
                 } catch (Exception exc) {

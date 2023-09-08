@@ -88,9 +88,9 @@ public class LogInController {
             }
 
             User user = new User();
-            //System.out.println(user.getId());
+
             if (textFieldsFilled && user != null) {
-                // Check the input of username
+
                 UserManager u = new UserManager();
                 user = u.findUserByUsername(username);
 
