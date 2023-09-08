@@ -136,6 +136,30 @@ public class App {
                 p.add(pai);
 
                 System.out.println("Painting " + pai.getTitle() + " added successfully.");
+            }else if (commandLine.hasOption("getG")) {
+                // code to get all the galleries from the database
+                for (Gallery gal : g.fetchGalleries()) {
+                    System.out.println("Name: " + gal.getName());
+                    System.out.println();
+                }
+            } else if (commandLine.hasOption("getA")) {
+                // code to get all artists from database
+                for (Artist artist : a.fetchArtists()) {
+                    System.out.println("Name: " + artist.getFirstName());
+                    System.out.println("Surname: " + artist.getLastName());
+                    System.out.println("Style: " + artist.getStyle());
+                    System.out.println();
+                }
+            } else if (commandLine.hasOption("getP")) {
+                // code to get all artists from database
+                for (Painting painting : p.fetchPaintings()) {
+                    System.out.println("Title: " + painting.getTitle());
+                    System.out.println("Available: " + painting.getAvailable());
+                    System.out.println();
+                }
+            } else {
+                System.out.println("Invalid option entered.");
+                formatOptions(options);
             }
         } catch (ParseException e) {
             System.out.println("Error while parsing the command line arguments: " + e.getMessage());
