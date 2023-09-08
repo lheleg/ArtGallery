@@ -48,8 +48,4 @@ public class GalleryManagerTests {
 
         galleryManager.delete(gall.getId());
     }
-
-
-
-
 }
