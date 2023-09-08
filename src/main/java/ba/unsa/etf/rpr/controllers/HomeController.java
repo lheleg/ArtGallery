@@ -85,7 +85,7 @@ public class HomeController {
 
     @FXML
     private void closeAction(MouseEvent event) {
-        secondaryStage.close();
+        if(secondaryStage != null) secondaryStage.close();
         primaryStage.close();
     }
 
