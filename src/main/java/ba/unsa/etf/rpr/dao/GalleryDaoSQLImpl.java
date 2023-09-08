@@ -24,7 +24,6 @@ public class GalleryDaoSQLImpl extends AbstractDao<Gallery> implements GalleryDa
             gal.setId(rs.getInt("id"));
             gal.setName(rs.getString("name"));
             gal.setUrl(rs.getString("url"));
-            gal.setUser(DaoFactory.userDao().getById(rs.getInt("userId")));
             gal.setImage(rs.getString("image"));
             return gal;
         } catch (SQLException e) {
@@ -38,7 +37,6 @@ public class GalleryDaoSQLImpl extends AbstractDao<Gallery> implements GalleryDa
         row.put("id", ob.getId());
         row.put("name", ob.getName());
         row.put("url", ob.getUrl());
-        row.put("userId", ob.getUser());
         row.put("image", ob.getImage());
         return row;
     }
@@ -60,7 +58,7 @@ public class GalleryDaoSQLImpl extends AbstractDao<Gallery> implements GalleryDa
     public List<Gallery> fetchGalleries() {
         List<Gallery> galleries = new ArrayList<>();
         try{
-            ResultSet resultSet = getConnection().createStatement().executeQuery("SELECT * FROM Galleries WHERE USERID=0");
+            ResultSet resultSet = getConnection().createStatement().executeQuery("SELECT * FROM Galleries");
             while (resultSet.next()) {
                 Gallery gal = row2object(resultSet);
                 galleries.add(gal);

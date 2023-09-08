@@ -1,7 +1,6 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.UserManager;
-import ba.unsa.etf.rpr.dao.AbstractDao;
 import ba.unsa.etf.rpr.domain.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,6 +12,8 @@ import javafx.stage.Stage;
 
 import java.io.FileReader;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Properties;
 
 public class RegisterController {
 
@@ -80,7 +81,6 @@ public class RegisterController {
     @FXML
     public ImageView cancelImageView;
 
-    private Stage primaryStage;
     public void initialize() {
         registerButton.setOnAction(actionEvent -> {
             String username = usernameField.getText().trim();
@@ -119,7 +119,11 @@ public class RegisterController {
                 user.setPassword(password);
 
                 try {
-                    Connection connection = AbstractDao.getConnection();
+                    FileReader reader = new FileReader("src/main/resources/db.properties");
+                    Properties p = new Properties();
+                    p.load(reader);
+                    String s1 = p.getProperty("user"), s2 = p.getProperty("password"), s3 = p.getProperty("url");
+                    Connection connection = DriverManager.getConnection(s3, s1, s2);
 
                     UserManager u = new UserManager();
                     User newUser = u.add(user);
@@ -130,7 +134,6 @@ public class RegisterController {
                     } else {
                         errorLabel.setText("Error registering user. Please try again.");
                     }
-
 
                     connection.close();
 
@@ -144,12 +147,13 @@ public class RegisterController {
         lastNameField.textProperty().addListener((observable, oldValue, newValue) -> clearErrorMessage(wrongLastNameLabel));
         passwordField.textProperty().addListener((observable, oldValue, newValue) -> clearErrorMessage(wrongPasswordLabel));
         usernameField.textProperty().addListener((observable, oldValue, newValue) -> clearErrorMessage(wrongUsernameLabel));
+
+        cancelImageView.setOnMouseClicked( mouseEvent -> {
+            Stage stage = (Stage) cancelImageView.getScene().getWindow();
+            stage.close();
+        });
     }
 
-    @FXML
-    private void registerButtonPerformed() {
-
-    }
     private void clearErrorMessage(Label label) {
         label.setText("");
     }

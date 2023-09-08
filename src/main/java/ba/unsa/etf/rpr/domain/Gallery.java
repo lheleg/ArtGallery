@@ -10,7 +10,6 @@ public class Gallery implements Idable{
     private int id;
     private String name;
     private String url;
-    private User user;
     private String image;
 
     public Gallery(){}
@@ -18,7 +17,6 @@ public class Gallery implements Idable{
     public Gallery(String name, String url, User user, String image) {
         this.name = name;
         this.url = url;
-        this.user = user;
         this.image = image;
     }
 
@@ -43,14 +41,6 @@ public class Gallery implements Idable{
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     @Override

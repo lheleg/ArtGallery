@@ -29,14 +29,15 @@ public class User implements Idable{
      * Makes instance of User.
      *
      * @param username  the username
+     * @param password  the password
      * @param firstName the first name
      * @param lastName  the last name
-     * @param email     the email
      */
-    public User(String username, String firstName, String lastName, String email) {
+    public User(String username, String password, String firstName, String lastName) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.password = password;
     }
 
     /**
