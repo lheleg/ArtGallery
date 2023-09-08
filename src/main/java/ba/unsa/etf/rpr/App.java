@@ -11,39 +11,35 @@ import ba.unsa.etf.rpr.exceptions.GalleryException;
 import org.apache.commons.cli.*;
 
 import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.List;
 
 /**
- * The type App.
+ * CLI implementation in following class
+ * @author Lejla Heleg
  */
-public class App 
-{
+public class App {
+    /**
+     * Defining final variables to describe all code having options
+     */
     private static final Option addGallery = new Option("ag", "add-gallery", false, "Adding new gallery to db");
     private static final Option addArtist = new Option("aa", "add-artist", false, "Adding new artist to db");
     private static final Option addPainting = new Option("ap", "add-painting", false, "Adding new painting to db");
-    private static final Option deleteGallery = new Option("dg", "delete-gallery", false, "Deleting a gallery from db");
-    private static final Option deleteArtist = new Option("da", "delete-artist", false, "Deleting a artist from db");
-    private static final Option deletePainting = new Option("dp", "delete-painting", false, "Deleting a painting db");
-    private static final Option updateGallery = new Option("ug", "update-gallery", false, "Updating a gallery in db");
-    private static final Option updateArtist = new Option("ua", "update-artist", false, "Updating a artist in db");
-    private static final Option updatePainting = new Option("up", "update-painting", false, "Updating a painting in db");
+
     private static final Option getGalleries = new Option("getG", "get-galleries", false, "Printing all galleries from db");
     private static final Option getArtists = new Option("getA", "get-artists", false, "Printing all artists from db");
     private static final Option getPaintings = new Option("getP", "get-paintings", false, "Printing all paintings from db");
 
-    private static final Option galleryName  = new Option("", "gallery-name", false, "");
-    private static final Option galleryUrl  = new Option("", "gallery-url", false, "");
-    private static final Option galleryImage  = new Option("", "gallery-image", false, "");
-    private static final Option artistFirstName  = new Option("", "artist-name", false, "");
-    private static final Option artistLastName  = new Option("", "artist-surname", false, "");
-    private static final Option artistStyle  = new Option("", "artist-style", false, "");
-    private static final Option artistImage  = new Option("", "artist-image", false, "");
-    private static final Option paintingAvailable  = new Option("", "painting-available", false, "");
-    private static final Option paintingTitle  = new Option("", "painting-title", false, "");
-    private static final Option paintingArtistId  = new Option("", "painting-artist", false, "");
-    private static final Option paintingGalleryId  = new Option("", "painting-gallery", false, "");
-    private static final Option paintingImage  = new Option("", "painting-image", false, "");
+    private static final Option galleryName = new Option("", "gallery-name", false, "");
+    private static final Option galleryUrl = new Option("", "gallery-url", false, "");
+    private static final Option galleryImage = new Option("", "gallery-image", false, "");
+    private static final Option artistFirstName = new Option("", "artist-name", false, "");
+    private static final Option artistLastName = new Option("", "artist-surname", false, "");
+    private static final Option artistStyle = new Option("", "artist-style", false, "");
+    private static final Option artistImage = new Option("", "artist-image", false, "");
+    private static final Option paintingAvailable = new Option("", "painting-available", false, "");
+    private static final Option paintingTitle = new Option("", "painting-title", false, "");
+    private static final Option paintingArtistId = new Option("", "painting-artist", false, "");
+    private static final Option paintingGalleryId = new Option("", "painting-gallery", false, "");
+    private static final Option paintingImage = new Option("", "painting-image", false, "");
 
 
     /**
@@ -51,15 +47,12 @@ public class App
      *
      * @param options the options
      */
-    public static String formatOptions(Options options) {
+    public static void formatOptions(Options options) {
         HelpFormatter helpFormatter = new HelpFormatter();
-        StringWriter stringWriter = new StringWriter();
-        PrintWriter printWriter = new PrintWriter(stringWriter);
-        String header = "java -jar hotel-booking.jar [option] 'something else if needed'";
-        helpFormatter.printUsage(printWriter, 200, header);
-        helpFormatter.printOptions(printWriter, 200, options, 2, 7);
+        PrintWriter printWriter = new PrintWriter(System.out);
+        helpFormatter.printUsage(printWriter, 150, "java -jar ArtGallery.jar [option] 'something else if needed' ");
+        helpFormatter.printOptions(printWriter, 150, options, 2, 7);
         printWriter.close();
-        return stringWriter.toString();
     }
 
 
@@ -73,13 +66,6 @@ public class App
         options.addOption(addGallery);
         options.addOption(addArtist);
         options.addOption(addPainting);
-        options.addOption(deleteGallery);
-        options.addOption(deleteArtist);
-        options.addOption(deletePainting);
-        options.addOption(updateGallery);
-        options.addOption(updateArtist);
-        options.addOption(deletePainting);
-        options.addOption(updatePainting);
         options.addOption(getArtists);
         options.addOption(getPaintings);
         options.addOption(galleryName);
@@ -96,7 +82,8 @@ public class App
         options.addOption(paintingImage);
         return options;
     }
-    public static void main( String[] args ) {
+
+    public static void main(String[] args) {
         CommandLineParser commandLineParser = new DefaultParser();
         Options options = addOptions();
         GalleryManager g = new GalleryManager();
@@ -112,7 +99,7 @@ public class App
                 String galleryName = commandLine.getArgList().get(0);
                 String galleryUrl = commandLine.getArgList().get(1);
                 String galleryImage = commandLine.getArgList().get(2);
-                Gallery gall = new Gallery(galleryName,galleryUrl,galleryImage);
+                Gallery gall = new Gallery(galleryName, galleryUrl, galleryImage);
                 // add the new gallery
                 g.add(gall);
                 System.out.println(gall.getName() + " added successfully.");
@@ -131,26 +118,25 @@ public class App
                 a.add(artist);
 
                 System.out.println("Artist " + artist.getFirstName() + " " + artist.getLastName() + " added successfully.");
-            }else if (commandLine.hasOption("ap")) {
+            } else if (commandLine.hasOption("ap")) {
                 if (!commandLine.hasOption("painting-available") || !commandLine.hasOption("painting-title")
                         || !commandLine.hasOption("painting-artist") || !commandLine.hasOption("painting-gallery") || !commandLine.hasOption("painting-image")) {
                     System.out.println("Adding a painting requires: painting-available, painting-title, painting-artist, painting-gallery and painting-image");
                     System.exit(1);
                 }
-                Boolean paintingAvailable = new Boolean(commandLine.getArgList().get(0));
+                Boolean paintingAvailable = Boolean.getBoolean(commandLine.getArgList().get(0));
                 String paintingTitle = commandLine.getArgList().get(1);
-                int paintingArtistId = new Integer(commandLine.getArgList().get(2));
-                int paintingGalleryId = new Integer(commandLine.getArgList().get(3));
+                int paintingArtistId = Integer.parseInt(commandLine.getArgList().get(2));
+                int paintingGalleryId = Integer.parseInt(commandLine.getArgList().get(3));
                 String paintingImage = commandLine.getArgList().get(4);
                 Artist artist = a.getById(paintingArtistId);
                 Gallery gallery = g.getById(paintingGalleryId);
                 Painting pai = new Painting(paintingAvailable, paintingTitle, artist, gallery, paintingImage);
-                // add new artist
+                // add new painting
                 p.add(pai);
 
                 System.out.println("Painting " + pai.getTitle() + " added successfully.");
             }
-
         } catch (ParseException e) {
             System.out.println("Error while parsing the command line arguments: " + e.getMessage());
             formatOptions(options);

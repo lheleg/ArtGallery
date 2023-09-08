@@ -14,6 +14,8 @@ public class Artist implements Idable{
     private String style;
     private String image;
 
+    public Artist() {}
+
     public Artist(String artistFirstName, String artistLastName, String artistStyle, String artistImage) {
         firstName = artistFirstName;
         lastName = artistLastName;

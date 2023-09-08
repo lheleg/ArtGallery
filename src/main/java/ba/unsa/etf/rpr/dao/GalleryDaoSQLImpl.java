@@ -42,19 +42,6 @@ public class GalleryDaoSQLImpl extends AbstractDao<Gallery> implements GalleryDa
     }
 
     @Override
-    public Gallery getGalleryByUserId(int userId) {
-        try {
-            ResultSet resultSet = getConnection().createStatement().executeQuery("SELECT id FROM Galleries WHERE USERID=" + userId);
-            while (resultSet.next()) {
-                return getById(resultSet.getInt(1));
-            }
-        }catch (SQLException | GalleryException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    @Override
     public List<Gallery> fetchGalleries() {
         List<Gallery> galleries = new ArrayList<>();
         try{

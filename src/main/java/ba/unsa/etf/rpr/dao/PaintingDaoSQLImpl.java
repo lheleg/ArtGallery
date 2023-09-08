@@ -5,6 +5,7 @@ import ba.unsa.etf.rpr.domain.Painting;
 import ba.unsa.etf.rpr.exceptions.GalleryException;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -61,5 +62,22 @@ public class PaintingDaoSQLImpl extends AbstractDao<Painting> implements Paintin
     @Override
     public List<Painting> getByGalleryAndAvailability(Gallery gallery) throws GalleryException {
         return executeQuery("SELECT * FROM Paintings WHERE galleryId=? AND available=1", new Object[]{gallery.getId()});
+    }
+    @Override
+    public List<Painting> fetchPaintings() throws GalleryException{
+        List<Painting> paintings = new ArrayList<>();
+        try{
+            ResultSet resultSet = getConnection().createStatement().executeQuery("SELECT * FROM Paintings");
+            while (resultSet.next()) {
+                Painting gal = row2object(resultSet);
+                paintings.add(gal);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (GalleryException e) {
+            e.printStackTrace();
+        }
+        //return the list of paintings
+        return paintings;
     }
 }

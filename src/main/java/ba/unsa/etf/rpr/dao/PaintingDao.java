@@ -16,6 +16,8 @@ public interface PaintingDao extends Dao<Painting>{
     public List<Painting> getByArtist(Artist artist) throws GalleryException;
     public List<Painting> getByGallery(Gallery galleryId) throws GalleryException;
 
+    public List<Painting> fetchPaintings() throws GalleryException;
+
     public List<Painting> getByGalleryAndAvailability(Gallery gallery) throws GalleryException;
 
 }

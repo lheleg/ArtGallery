@@ -69,4 +69,8 @@ public class PaintingManager {
     public List<Painting> getByArtist(Artist artist) throws GalleryException {
         return DaoFactory.paintingDao().getByArtist(artist);
     }
+
+    public List<Painting> fetchPaintings() throws GalleryException{
+        return DaoFactory.paintingDao().fetchPaintings();
+    }
 }
