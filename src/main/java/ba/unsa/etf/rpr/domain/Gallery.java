@@ -56,6 +56,8 @@ public class Gallery implements Idable{
         return "Gallery{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                ", image='" + image + '\'' +
                 '}';
     }
     @Override
