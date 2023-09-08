@@ -14,7 +14,7 @@ public class Gallery implements Idable{
 
     public Gallery(){}
 
-    public Gallery(String name, String url, User user, String image) {
+    public Gallery(String name, String url, String image) {
         this.name = name;
         this.url = url;
         this.image = image;

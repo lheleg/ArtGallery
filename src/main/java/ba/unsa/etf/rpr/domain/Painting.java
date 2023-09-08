@@ -14,6 +14,16 @@ public class Painting implements Idable{
     private Gallery gallery;
     private String image;
 
+    public Painting() {}
+
+    public Painting(Boolean paintingAvailable, String paintingTitle, Artist art, Gallery gall, String paintingImage) {
+        available = paintingAvailable;
+        title = paintingTitle;
+        artist = art;
+        gallery = gall;
+        image = paintingImage;
+    }
+
     public int getId() {
         return id;
     }
