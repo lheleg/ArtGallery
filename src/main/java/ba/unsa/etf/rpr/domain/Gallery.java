@@ -60,7 +60,6 @@ public class Gallery implements Idable{
     }
     @Override
     public int hashCode() {
-
         return Objects.hash(id, name);
     }
 

@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.AppFX;
 import ba.unsa.etf.rpr.business.ArtistManager;
 import ba.unsa.etf.rpr.business.GalleryManager;
 import ba.unsa.etf.rpr.business.PaintingManager;
@@ -31,6 +32,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -306,7 +308,7 @@ public class GalleriesController {
     @FXML
     public void initialize() throws GalleryException {
         GalleryDivs();
-     //   myGallery = g.getGalleryByUserId(user.getId());
+        // myGallery = g.getGalleryByUserId(user.getId());
        // if(g.getGalleryByUserId(user.getId()) == null) myGallery = new Gallery(user.getFirstName()+"'s gallery", null,user,null);
         galleriesButton.setOnAction(event -> {
             // Clear existing content in pane
@@ -341,7 +343,27 @@ public class GalleriesController {
 
     @FXML
     private void closeAction(MouseEvent event) {
-        secondaryStage.close();
+        if(secondaryStage != null) secondaryStage.close();
+        primaryStage.close();
+    }
+
+    @FXML
+    private void logOut(MouseEvent event) throws IOException {
+        if(secondaryStage != null) secondaryStage.close();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
+        Parent root = loader.load();
+
+        HomeController controller = loader.getController();
+
+        Stage stage = new Stage();
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+
+        controller.setPrimaryStage(stage);
+        stage.getIcons().add(new Image("/images/ikonica.png"));
+        stage.initStyle(StageStyle.TRANSPARENT); // hides upper window bar
+        stage.setResizable(false);
+        stage.show();
         primaryStage.close();
     }
 
