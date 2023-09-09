@@ -63,4 +63,9 @@ public class ArtistDaoSQLImpl extends AbstractDao<Artist> implements ArtistDao{
         //return the list of artists
         return artists;
     }
+
+    @Override
+    public Artist getByName(String name) throws GalleryException {
+        return executeQueryUnique("SELECT * FROM Artists WHERE firstName = ?", new Object[]{name});
+    }
 }

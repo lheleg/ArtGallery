@@ -52,7 +52,7 @@ public class GalleryManager {
     }
 
     /**
-     * Fetch public galleries
+     * Fetch galleries.
      *
      * @return the list of galleries
      */
@@ -60,4 +60,12 @@ public class GalleryManager {
         return DaoFactory.galleryDao().fetchGalleries();
     }
 
+    /**
+     * Gets gallery by name.
+     *
+     * @return the gallery.
+     */
+    public Gallery getByName(String gallName) throws GalleryException {
+        return DaoFactory.galleryDao().getByName(gallName);
+    }
 }

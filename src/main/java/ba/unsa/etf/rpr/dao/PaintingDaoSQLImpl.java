@@ -43,8 +43,8 @@ public class PaintingDaoSQLImpl extends AbstractDao<Painting> implements Paintin
         row.put("id", ob.getId());
         row.put("available", ob.getAvailable());
         row.put("title", ob.getTitle());
-        row.put("artistId", ob.getArtist());
-        row.put("galleryId", ob.getGallery());
+        row.put("artistId", ob.getArtist().getId());
+        row.put("galleryId", ob.getGallery().getId());
         row.put("image", ob.getImage());
         return row;
     }
@@ -63,6 +63,12 @@ public class PaintingDaoSQLImpl extends AbstractDao<Painting> implements Paintin
     public List<Painting> getByGalleryAndAvailability(Gallery gallery) throws GalleryException {
         return executeQuery("SELECT * FROM Paintings WHERE galleryId=? AND available=1", new Object[]{gallery.getId()});
     }
+
+    @Override
+    public Painting getByName(String paiName) throws GalleryException {
+        return executeQueryUnique("SELECT * FROM Paintings WHERE title = ?", new Object[]{paiName});
+    }
+
     @Override
     public List<Painting> fetchPaintings() throws GalleryException{
         List<Painting> paintings = new ArrayList<>();

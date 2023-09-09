@@ -24,6 +24,9 @@ public class App {
     private static final Option addArtist = new Option("aa", "add-artist", false, "Adding new artist to db");
     private static final Option addPainting = new Option("ap", "add-painting", false, "Adding new painting to db");
 
+    private static final Option deleteGallery = new Option("dg", "delete-gallery", false, "Deleting a gallery from db");
+    private static final Option deleteArtist = new Option("da", "delete-artist", false, "Deleting a artist from db");
+    private static final Option deletePainting = new Option("dp", "delete-painting", false, "Deleting a painting db");
     private static final Option getGalleries = new Option("getG", "get-galleries", false, "Printing all galleries from db");
     private static final Option getArtists = new Option("getA", "get-artists", false, "Printing all artists from db");
     private static final Option getPaintings = new Option("getP", "get-paintings", false, "Printing all paintings from db");
@@ -65,7 +68,11 @@ public class App {
         Options options = new Options();
         options.addOption(addGallery);
         options.addOption(addArtist);
+        options.addOption(getGalleries);
         options.addOption(addPainting);
+        options.addOption(deleteGallery);
+        options.addOption(deleteArtist);
+        options.addOption(deletePainting);
         options.addOption(getArtists);
         options.addOption(getPaintings);
         options.addOption(galleryName);
@@ -136,6 +143,21 @@ public class App {
                 p.add(pai);
 
                 System.out.println("Painting " + pai.getTitle() + " added successfully.");
+            } else if (commandLine.hasOption("dg")) {
+                String gallName = commandLine.getArgList().get(0);
+                // code to delete the gallery from db
+                g.delete(g.getByName(gallName).getId());
+                System.out.println("Gallery " + gallName + " deleted successfully.");
+            }else if (commandLine.hasOption("da")) {
+                String artName = commandLine.getArgList().get(0);
+                // code to delete the artist from db
+                a.delete(a.getByName(artName).getId());
+                System.out.println("Artist " + artName + " deleted successfully.");
+            }else if (commandLine.hasOption("dp")) {
+                String paiName = commandLine.getArgList().get(0);
+                // code to delete the painting from db
+                p.delete(p.getByName(paiName).getId());
+                System.out.println("Painting " + paiName + " deleted successfully.");
             }else if (commandLine.hasOption("getG")) {
                 // code to get all the galleries from the database
                 for (Gallery gal : g.fetchGalleries()) {

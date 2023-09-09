@@ -13,4 +13,5 @@ import java.util.List;
 public interface GalleryDao extends Dao<Gallery>{
 
     public List<Gallery> fetchGalleries() throws GalleryException;
+    public Gallery getByName(String name) throws GalleryException;
 }

@@ -58,4 +58,10 @@ public class GalleryDaoSQLImpl extends AbstractDao<Gallery> implements GalleryDa
         //return the list of galleries
         return galleries;
     }
+
+    @Override
+    public Gallery getByName(String name) throws GalleryException {
+        return executeQueryUnique("SELECT * FROM Galleries WHERE name = ?", new Object[]{name});
+    }
+
 }

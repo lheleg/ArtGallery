@@ -59,4 +59,13 @@ public class ArtistManager {
     public List<Artist> fetchArtists() throws GalleryException {
         return DaoFactory.artistDao().fetchArtists();
     }
+
+    /**
+     * get Artist by name.
+     *
+     * @return the artist.
+     */
+    public Artist getByName(String artName) throws GalleryException {
+        return  DaoFactory.artistDao().getByName(artName);
+    }
 }

@@ -20,4 +20,5 @@ public interface PaintingDao extends Dao<Painting>{
 
     public List<Painting> getByGalleryAndAvailability(Gallery gallery) throws GalleryException;
 
+    public Painting getByName(String paiName) throws GalleryException;
 }
