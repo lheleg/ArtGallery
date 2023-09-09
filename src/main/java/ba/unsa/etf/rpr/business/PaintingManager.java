@@ -77,4 +77,8 @@ public class PaintingManager {
     public Painting getByName(String paiName) throws GalleryException{
         return DaoFactory.paintingDao().getByName(paiName);
     }
+
+    public List<Painting> getByGalleryAndAvailability(Gallery gallery) throws GalleryException {
+        return DaoFactory.paintingDao().getByGalleryAndAvailability(gallery);
+    }
 }
