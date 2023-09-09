@@ -49,15 +49,35 @@ public class UserManager {
         return DaoFactory.userDao().getById(id);
     }
 
+    /**
+     * Finds a user by their username.
+     *
+     * @param username the username of the user to find.
+     * @return the User object with the specified username or null if not found.
+     */
     public User findUserByUsername(String username) {
         return DaoFactory.userDao().findUserByUsername(username);
     }
 
+    /**
+     * Validates if a username is unique in the system.
+     *
+     * @param username the username to validate.
+     * @return true if the username is unique; false otherwise.
+     */
     public Boolean validateUsername(String username) {
         return DaoFactory.userDao().validateUsername(username);
     }
 
     private static final String HASHING_ALGORITHM = "SHA-256";
+
+    /**
+     * Hashes a password using SHA-256 algorithm.
+     *
+     * @param password the password to hash.
+     * @return the hashed password as a hexadecimal string.
+     * @throws NoSuchAlgorithmException if the hashing algorithm is not available.
+     */
     public static String hashPassword(String password) throws NoSuchAlgorithmException {
         MessageDigest messageDigest = MessageDigest.getInstance(HASHING_ALGORITHM);
         messageDigest.update(password.getBytes());

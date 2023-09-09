@@ -70,14 +70,34 @@ public class PaintingManager {
         return DaoFactory.paintingDao().getByArtist(artist);
     }
 
+    /**
+     * Retrieves a list of all paintings.
+     *
+     * @return a list of all paintings.
+     * @throws GalleryException if a GalleryException occurs during the operation.
+     */
     public List<Painting> fetchPaintings() throws GalleryException{
         return DaoFactory.paintingDao().fetchPaintings();
     }
 
-    public Painting getByName(String paiName) throws GalleryException{
-        return DaoFactory.paintingDao().getByName(paiName);
+    /**
+     * Retrieves a painting by its name.
+     *
+     * @param paintingName the name of the painting to retrieve.
+     * @return the Painting object with the specified name.
+     * @throws GalleryException if a GalleryException occurs during the operation.
+     */
+    public Painting getByName(String paintingName) throws GalleryException{
+        return DaoFactory.paintingDao().getByName(paintingName);
     }
 
+    /**
+     * Retrieves a list of paintings associated with a specific Gallery and marked as available.
+     *
+     * @param gallery the Gallery object to retrieve paintings for.
+     * @return a list of available paintings associated with the specified Gallery.
+     * @throws GalleryException if a GalleryException occurs during the operation.
+     */
     public List<Painting> getByGalleryAndAvailability(Gallery gallery) throws GalleryException {
         return DaoFactory.paintingDao().getByGalleryAndAvailability(gallery);
     }
