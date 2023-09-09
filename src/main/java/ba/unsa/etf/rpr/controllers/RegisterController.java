@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 
 /**
@@ -128,7 +129,11 @@ public class RegisterController {
                 user.setFirstName(firstName);
                 user.setLastName(lastName);
                 user.setUsername(username);
-                user.setPassword(password);
+                try {
+                    user.setPassword(u.hashPassword(password));
+                } catch (NoSuchAlgorithmException e) {
+                    throw new RuntimeException(e);
+                }
 
                 try {
                     Connection connection = AbstractDao.getConnection();

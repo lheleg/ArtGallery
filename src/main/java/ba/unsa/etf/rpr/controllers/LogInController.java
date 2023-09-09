@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
@@ -100,32 +101,36 @@ public class LogInController {
                 user = u.findUserByUsername(username);
 
                     // Check the input of password
-                if (Objects.equals(user.getPassword(), password)) {
-                    try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/galleries.fxml"));
-                        Parent root = loader.load();
+                try {
+                    if (Objects.equals(user.getPassword(), u.hashPassword(password))) {
+                        try {
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/galleries.fxml"));
+                            Parent root = loader.load();
 
-                        GalleriesController controller = loader.getController();
-                        controller.setUser(user);
+                            GalleriesController controller = loader.getController();
+                            controller.setUser(user);
 
-                        Stage stage = new Stage();
-                        stage.initStyle(StageStyle.TRANSPARENT);
-                        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+                            Stage stage = new Stage();
+                            stage.initStyle(StageStyle.TRANSPARENT);
+                            stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
 
-                        controller.setPrimaryStage(stage);
-                        stage.getIcons().add(new Image("/images/ikonica.png"));
-                        stage.initStyle(StageStyle.TRANSPARENT); // hides upper window bar
-                        stage.setResizable(false);
-                        stage.show();
-                        this.primaryStage.close();
-                        ((Stage) usernameField.getScene().getWindow()).close();
+                            controller.setPrimaryStage(stage);
+                            stage.getIcons().add(new Image("/images/ikonica.png"));
+                            stage.initStyle(StageStyle.TRANSPARENT); // hides upper window bar
+                            stage.setResizable(false);
+                            stage.show();
+                            this.primaryStage.close();
+                            ((Stage) usernameField.getScene().getWindow()).close();
 
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }else {
+                        // Display an error message
+                        errorLabel.setText("Invalid username or password.");
                     }
-                }else {
-                    // Display an error message
-                    errorLabel.setText("Invalid username or password.");
+                } catch (NoSuchAlgorithmException e) {
+                    throw new RuntimeException(e);
                 }
             }
         });
