@@ -8,6 +8,9 @@ import ba.unsa.etf.rpr.exceptions.GalleryException;
 
 import java.util.List;
 
+/**
+ * The type Painting manager
+ */
 public class PaintingManager {
 
     /**

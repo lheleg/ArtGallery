@@ -7,6 +7,9 @@ import ba.unsa.etf.rpr.exceptions.GalleryException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * The type User manager
+ */
 public class UserManager {
 
     /**
