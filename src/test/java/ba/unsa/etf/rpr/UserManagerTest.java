@@ -10,8 +10,10 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+/**
+ * Unit tests for the UserManager class.
+ */
 public class UserManagerTest {
-
     @Test
     void add() throws GalleryException {
         UserManager userManager = new UserManager();

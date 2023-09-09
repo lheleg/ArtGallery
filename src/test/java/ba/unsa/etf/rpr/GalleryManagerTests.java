@@ -14,6 +14,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+/**
+ * Unit tests for the GalleryManager class.
+ */
 public class GalleryManagerTests {
     private GalleryManager galleryManager = new GalleryManager();
     @Mock
