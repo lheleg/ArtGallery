@@ -17,10 +17,21 @@ import java.util.TreeMap;
  */
 public class PaintingDaoSQLImpl extends AbstractDao<Painting> implements PaintingDao {
 
+    /**
+     * Constructs a new PaintingDaoSQLImpl instance.
+     * Initializes the DAO with the "Paintings" table name.
+     */
     public PaintingDaoSQLImpl() {
         super("Paintings");
     }
 
+    /**
+     * Converts a ResultSet row into a Painting object.
+     *
+     * @param rs the ResultSet containing the row data.
+     * @return a Painting object created from the ResultSet data.
+     * @throws GalleryException if a GalleryException occurs during the conversion.
+     */
     @Override
     public Painting row2object(ResultSet rs) throws GalleryException {
         try {
@@ -37,6 +48,12 @@ public class PaintingDaoSQLImpl extends AbstractDao<Painting> implements Paintin
         }
     }
 
+    /**
+     * Converts a Painting object into a map of column names to values.
+     *
+     * @param ob the Painting object to convert.
+     * @return a map representing the Painting object.
+     */
     @Override
     public Map<String, Object> object2row(Painting ob) {
         Map<String, Object> row = new TreeMap<>();
@@ -49,26 +66,60 @@ public class PaintingDaoSQLImpl extends AbstractDao<Painting> implements Paintin
         return row;
     }
 
+    /**
+     * Retrieves a list of paintings associated with a specific Artist.
+     *
+     * @param artist the Artist object to retrieve paintings for.
+     * @return a list of Painting objects associated with the specified Artist.
+     * @throws GalleryException if a GalleryException occurs during the operation.
+     */
     @Override
     public List<Painting> getByArtist(Artist artist) throws GalleryException{
         return executeQuery("SELECT * FROM Paintings WHERE artistId = ?", new Object[]{artist.getId()});
     }
 
+    /**
+     * Retrieves a list of paintings associated with a specific Gallery.
+     *
+     * @param gallery the Gallery object to retrieve paintings for.
+     * @return a list of Painting objects associated with the specified Gallery.
+     * @throws GalleryException if a GalleryException occurs during the operation.
+     */
     @Override
     public List<Painting> getByGallery(Gallery gallery) throws GalleryException{
         return executeQuery("SELECT * FROM Paintings WHERE galleryId = ?", new Object[]{gallery.getId()});
     }
 
+    /**
+     * Retrieves a list of available paintings associated with a specific Gallery.
+     *
+     * @param gallery the Gallery object to retrieve available paintings for.
+     * @return a list of available Painting objects associated with the specified Gallery.
+     * @throws GalleryException if a GalleryException occurs during the operation.
+     */
     @Override
     public List<Painting> getByGalleryAndAvailability(Gallery gallery) throws GalleryException {
         return executeQuery("SELECT * FROM Paintings WHERE galleryId=? AND available=1", new Object[]{gallery.getId()});
     }
 
+    /**
+     * Retrieves a painting by its title.
+     *
+     * @param paintingName the title of the painting to retrieve.
+     * @return a Painting object with the specified title or null if not found.
+     * @throws GalleryException if a GalleryException occurs during the operation.
+     */
     @Override
-    public Painting getByName(String paiName) throws GalleryException {
-        return executeQueryUnique("SELECT * FROM Paintings WHERE title = ?", new Object[]{paiName});
+    public Painting getByName(String paintingName) throws GalleryException {
+        return executeQueryUnique("SELECT * FROM Paintings WHERE title = ?", new Object[]{paintingName});
     }
 
+    /**
+     * Fetches a list of all paintings from the database.
+     *
+     * @return a list of Painting objects representing all paintings in the database.
+     * @throws GalleryException if a GalleryException occurs during the operation.
+     */
     @Override
     public List<Painting> fetchPaintings() throws GalleryException{
         List<Painting> paintings = new ArrayList<>();
