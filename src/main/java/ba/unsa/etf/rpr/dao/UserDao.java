@@ -9,4 +9,6 @@ import ba.unsa.etf.rpr.domain.User;
  */
 public interface UserDao extends Dao<User> {
     User findUserByUsername(String username);
+
+    Boolean validateUsername(String username);
 }

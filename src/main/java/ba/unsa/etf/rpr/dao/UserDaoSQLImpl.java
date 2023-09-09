@@ -66,4 +66,17 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao {
         }
         return null;
     }
+
+    @Override
+    public Boolean validateUsername(String username)  {
+        try {
+            ResultSet rs = getConnection().createStatement().executeQuery("SELECT id FROM Users WHERE username = '" + username + "'");
+            if(rs.next()){
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return true;
+    }
 }

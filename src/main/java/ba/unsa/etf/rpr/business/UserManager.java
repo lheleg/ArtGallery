@@ -49,4 +49,9 @@ public class UserManager {
     public User findUserByUsername(String username) {
         return DaoFactory.userDao().findUserByUsername(username);
     }
+
+    public Boolean validateUsername(String username) {
+        return DaoFactory.userDao().validateUsername(username);
+    }
+
 }

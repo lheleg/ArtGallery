@@ -102,7 +102,7 @@ public class RegisterController {
                 textFieldsFilled = false;
             }
 
-            if (u.findUserByUsername(username) != null) {
+            if (!u.validateUsername(username)) {
                 wrongUsernameLabel.setText("This username is already in use.");
                 textFieldsFilled = false;
             }
