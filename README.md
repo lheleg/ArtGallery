@@ -20,3 +20,16 @@ PicturePerfect is the perfect platform for exploring galleries, artists, and art
 > Scene Builder
 
 > MySQL Workbench
+
+
+# GUI Run
+```shell
+mvn clean install javafx:run
+```
+
+# CLI Run
+
+```shell
+mvn clean install -P cli-app
+java -jar target/ArtGallery-cli-jar-with-dependencies.jar [option] [args]
+```
