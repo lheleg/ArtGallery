@@ -32,7 +32,7 @@ public class GalleryManagerTests {
     }
 
     @Test
-    void add() throws GalleryException {
+    void fetchGalleries() throws GalleryException {
         Gallery addedGall = galleryManager.add(gall);
         List<Gallery> allGalleries = galleryManager.fetchGalleries();
         boolean isAdded = allGalleries.contains(addedGall);
@@ -45,7 +45,5 @@ public class GalleryManagerTests {
         gall.setName("Lejla's gallery");
         galleryDao.update(gall);
         verify(galleryDao).update(gall);
-
-        galleryManager.delete(gall.getId());
     }
 }
