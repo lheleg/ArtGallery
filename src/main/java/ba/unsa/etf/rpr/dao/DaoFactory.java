@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr.dao;
 
+import ba.unsa.etf.rpr.domain.Wish;
+
 /**
  * Factory method for singleton implementation of DAOs
  *
@@ -11,6 +13,7 @@ public class DaoFactory {
     private static final PaintingDao paintingDao = new PaintingDaoSQLImpl();
     private static final GalleryDao galleryDao = new GalleryDaoSQLImpl();
     private static final UserDao userDao = new UserDaoSQLImpl();
+    private static final WishDao wishDao = new WishDaoSQLImpl();
 
     private DaoFactory(){
     }
@@ -29,6 +32,10 @@ public class DaoFactory {
 
     public static UserDao userDao() {
         return userDao;
+    }
+
+    public static WishDao wishDao() {
+        return wishDao();
     }
 }
 
