@@ -22,12 +22,12 @@ PicturePerfect is the perfect platform for exploring galleries, artists, and art
 > MySQL Workbench
 
 
-# GUI Run
+## GUI Run
 ```shell
-mvn clean install javafx:run
+mvn clean javafx:run
 ```
 
-# CLI Run
+## CLI Run
 
 ```shell
 mvn clean install -P cli-app
