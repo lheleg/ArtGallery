@@ -35,7 +35,7 @@ public class DaoFactory {
     }
 
     public static WishDao wishDao() {
-        return wishDao();
+        return wishDao;
     }
 }
 

@@ -13,6 +13,26 @@ public class Wish implements Idable{
     private Painting painting;
     private User user;
 
+    /**
+     * Makes instance of Wish.
+     *
+     * @param savedDate  the savedDate
+     * @param unsavedDate  the unsavedDate
+     * @param painting the painting
+     * @param user  the user
+     */
+    public Wish(Date savedDate, Date unsavedDate, Painting painting, User user) {
+        this.savedDate = savedDate;
+        this.unsavedDate = unsavedDate;
+        this.painting = painting;
+        this.user = user;
+    }
+
+    /**
+     * Makes instance of Wish.
+     */
+    public Wish() {
+    }
     @Override
     public void setId(int id) {
         this.id = id;

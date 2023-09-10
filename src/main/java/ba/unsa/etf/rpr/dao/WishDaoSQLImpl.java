@@ -72,6 +72,6 @@ public class WishDaoSQLImpl extends AbstractDao<Wish> implements WishDao {
      */
     @Override
     public List<Wish> getUserSavedPaintings(User user) throws GalleryException {
-        return executeQuery("SELECT * FROM Wishes WHERE userId = ? and unsavedDate = null",new Object[]{user.getId()});
+        return executeQuery("SELECT * FROM Wishes WHERE userId = ? and unsavedDate is null",new Object[]{user.getId()});
     }
 }

@@ -44,11 +44,22 @@ public class WishManager {
      * Gets by id.
      *
      * @param id the id
-     * @return the by id
+     * @return the wish
      * @throws GalleryException the gallery exception
      */
     public Wish getById(int id) throws GalleryException {
         return DaoFactory.wishDao().getById(id);
+    }
+
+    /**
+     * Updates wish.
+     *
+     * @param wish the wish
+     * @return the wish
+     * @throws GalleryException the gallery exception
+     */
+    public Wish update(Wish wish) throws GalleryException {
+        return DaoFactory.wishDao().update(wish);
     }
 
     /**

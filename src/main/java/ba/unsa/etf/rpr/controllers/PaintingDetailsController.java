@@ -1,7 +1,9 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.business.WishManager;
 import ba.unsa.etf.rpr.domain.Painting;
 import ba.unsa.etf.rpr.domain.User;
+import ba.unsa.etf.rpr.domain.Wish;
 import ba.unsa.etf.rpr.exceptions.GalleryException;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -15,6 +17,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.awt.*;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * The type Painting detail controller.
@@ -31,6 +35,8 @@ public class PaintingDetailsController {
     public ImageView cancelImageView;
     private Painting painting;
     private User user;
+
+    private final WishManager w = new WishManager();
 
     private GalleriesController g;
 
@@ -100,7 +106,16 @@ public class PaintingDetailsController {
         });
 
         saveButton.setOnAction(actionEvent -> {
-            getG().getMyGallery().add(painting);
+            try {
+                Wish wish = new Wish();
+                wish.setPainting(painting);
+                wish.setSavedDate(new Date());
+                wish.setUnsavedDate(null);
+                wish.setUser(user);
+                w.add(wish);
+            } catch (GalleryException e) {
+                throw new RuntimeException(e);
+            }
             saveButton.setDisable(true);
         });
     }

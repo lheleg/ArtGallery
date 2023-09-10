@@ -3,6 +3,7 @@ package ba.unsa.etf.rpr.controllers;
 import ba.unsa.etf.rpr.business.ArtistManager;
 import ba.unsa.etf.rpr.business.GalleryManager;
 import ba.unsa.etf.rpr.business.PaintingManager;
+import ba.unsa.etf.rpr.business.WishManager;
 import ba.unsa.etf.rpr.domain.*;
 import ba.unsa.etf.rpr.exceptions.GalleryException;
 import ba.unsa.etf.rpr.util.SecondaryStage;
@@ -35,6 +36,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
@@ -62,8 +64,11 @@ public class GalleriesController {
 
 
     private final GalleryManager g = new GalleryManager();
+    private final WishManager w = new WishManager();
 
-    private List<Painting> myGallery = new ArrayList<>();
+    private List<Wish> myGallery = new ArrayList<>();
+
+    private List<Painting> myGalleryPaintings = new ArrayList<>();
 
     private final ArtistManager a = new ArtistManager();
 
@@ -91,7 +96,7 @@ public class GalleriesController {
        // System.out.println(Arrays.toString(galleries.toArray()));
         for (Gallery gal : galleries) {
             ImageView imageView = new ImageView(new Image("/images/galleries/"+gal.getId()+".jpg"));
-            imageView.setFitWidth(275);
+            imageView.setFitWidth(270);
             imageView.setFitHeight(170);
             Rectangle rect = new Rectangle(imageView.getFitWidth()+5, imageView.getFitHeight()+5,
                     new LinearGradient(0, 1.4, 0, 0, true, javafx.scene.paint.CycleMethod.NO_CYCLE,
@@ -207,7 +212,7 @@ public class GalleriesController {
             paintings = p.getByGallery(g.getById(id));
         }else if (forWhat == "artist") {
             paintings = p.getByArtist(a.getById(id));
-        }else paintings = myGallery;
+        }else paintings = myGalleryPaintings;
 
         for (Painting painting : paintings) {
             ImageView imageView = new ImageView(new Image("/images/paintings/"+painting.getId()+".jpg"));
@@ -237,8 +242,19 @@ public class GalleriesController {
                 remove.setCursor(Cursor.HAND);;
 
                 remove.setOnMouseClicked(event -> {
-                    myGallery.remove(painting);
+                    Wish wish = myGallery.get(paintings.indexOf(painting));
+                    wish.setUnsavedDate(new Date());
                     try {
+                        w.update(wish);
+                    } catch (GalleryException e) {
+                        throw new RuntimeException(e);
+                    }
+                    try {
+                        myGallery = w.getUserSavedPaintings(this.user);
+                        myGalleryPaintings = new ArrayList<>();
+                        for(Wish wi : myGallery){
+                            myGalleryPaintings.add(wi.getPainting());
+                        }
                         pane.getChildren().clear();
                         ShowPaintings(null, "private gallery");
                     } catch (GalleryException e) {
@@ -347,8 +363,7 @@ public class GalleriesController {
     @FXML
     public void initialize() throws GalleryException {
         GalleryDivs();
-        // myGallery = g.getGalleryByUserId(user.getId());
-       // if(g.getGalleryByUserId(user.getId()) == null) myGallery = new Gallery(user.getFirstName()+"'s gallery", null,user,null);
+
         galleriesButton.setOnAction(event -> {
             // Clear existing content in pane
             pane.getChildren().clear();
@@ -370,6 +385,15 @@ public class GalleriesController {
         });
 
         myGalleryButton.setOnAction(event -> {
+            try {
+                myGallery = w.getUserSavedPaintings(this.user);
+            } catch (GalleryException e) {
+                throw new RuntimeException(e);
+            }
+            myGalleryPaintings = new ArrayList<>();
+            for(Wish wish : myGallery){
+                myGalleryPaintings.add(wish.getPainting());
+            }
             // Clear existing content in pane
             pane.getChildren().clear();
             try {
@@ -444,7 +468,7 @@ public class GalleriesController {
      *
      * @return The user's private gallery as a list of paintings.
      */
-    public List<Painting> getMyGallery() {
+    public List<Wish> getMyGallery() {
         return myGallery;
     }
 }
